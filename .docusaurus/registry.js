@@ -1,4 +1,5 @@
 export default {
+  "0058b4c6": [() => import(/* webpackChunkName: "0058b4c6" */ "@generated/docusaurus-plugin-content-docs/default/p/docs-175.json"), "@generated/docusaurus-plugin-content-docs/default/p/docs-175.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/p/docs-175.json")],
   "05fb7288": [() => import(/* webpackChunkName: "05fb7288" */ "@site/docs/chapters/ch1-intro.mdx"), "@site/docs/chapters/ch1-intro.mdx", require.resolveWeak("@site/docs/chapters/ch1-intro.mdx")],
   "17896441": [() => import(/* webpackChunkName: "17896441" */ "@theme/DocItem"), "@theme/DocItem", require.resolveWeak("@theme/DocItem")],
   "3ea9cdb1": [() => import(/* webpackChunkName: "3ea9cdb1" */ "@site/docs/chapters/ch4-sim.mdx"), "@site/docs/chapters/ch4-sim.mdx", require.resolveWeak("@site/docs/chapters/ch4-sim.mdx")],
@@ -17,6 +18,5 @@ export default {
   "aba21aa0": [() => import(/* webpackChunkName: "aba21aa0" */ "@generated/docusaurus-plugin-content-docs/default/__plugin.json"), "@generated/docusaurus-plugin-content-docs/default/__plugin.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/__plugin.json")],
   "bda5b546": [() => import(/* webpackChunkName: "bda5b546" */ "@site/docs/appendices/appendix-b.mdx"), "@site/docs/appendices/appendix-b.mdx", require.resolveWeak("@site/docs/appendices/appendix-b.mdx")],
   "c4f5d8e4": [() => import(/* webpackChunkName: "c4f5d8e4" */ "@site/src/pages/index.js"), "@site/src/pages/index.js", require.resolveWeak("@site/src/pages/index.js")],
-  "dfa4bc5f": [() => import(/* webpackChunkName: "dfa4bc5f" */ "@generated/docusaurus-plugin-content-docs/default/p/physical-ai-humanoid-robotics-book-docs-5e4.json"), "@generated/docusaurus-plugin-content-docs/default/p/physical-ai-humanoid-robotics-book-docs-5e4.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/p/physical-ai-humanoid-robotics-book-docs-5e4.json")],
   "f1bf820f": [() => import(/* webpackChunkName: "f1bf820f" */ "@site/docs/chapters/ch5-vla.mdx"), "@site/docs/chapters/ch5-vla.mdx", require.resolveWeak("@site/docs/chapters/ch5-vla.mdx")],
   "ff802fd6": [() => import(/* webpackChunkName: "ff802fd6" */ "@site/docs/chapters/ch3-ros2.mdx"), "@site/docs/chapters/ch3-ros2.mdx", require.resolveWeak("@site/docs/chapters/ch3-ros2.mdx")],};

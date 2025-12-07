@@ -5,10 +5,10 @@
   "source": "@site/docs/appendices/appendix-a.mdx",
   "sourceDirName": "appendices",
   "slug": "/appendices/appendix-a",
-  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-a",
+  "permalink": "/docs/appendices/appendix-a",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/Danishhshahid/docs/appendices/appendix-a.mdx",
+  "editUrl": "https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book/tree/main/website/docs/appendices/appendix-a.mdx",
   "tags": [],
   "version": "current",
   "frontMatter": {
@@ -20,10 +20,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Ch6: AI-Robot Pipeline",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch6-capstone"
+    "permalink": "/docs/chapters/ch6-capstone"
   },
   "next": {
     "title": "Appendix B: Deployment",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b"
+    "permalink": "/docs/appendices/appendix-b"
   }
 }

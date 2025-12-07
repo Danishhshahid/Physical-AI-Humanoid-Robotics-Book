@@ -5,10 +5,10 @@
   "source": "@site/docs/appendices/appendix-b.mdx",
   "sourceDirName": "appendices",
   "slug": "/appendices/appendix-b",
-  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b",
+  "permalink": "/docs/appendices/appendix-b",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/Danishhshahid/docs/appendices/appendix-b.mdx",
+  "editUrl": "https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book/tree/main/website/docs/appendices/appendix-b.mdx",
   "tags": [],
   "version": "current",
   "frontMatter": {
@@ -20,10 +20,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Appendix A: RAG Setup",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-a"
+    "permalink": "/docs/appendices/appendix-a"
   },
   "next": {
     "title": "Appendix C: Urdu Glossary",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c"
+    "permalink": "/docs/appendices/appendix-c"
   }
 }

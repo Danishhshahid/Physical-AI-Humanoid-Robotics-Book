@@ -3,86 +3,86 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/Physical-AI-Humanoid-Robotics-Book/docs',
-    component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs', 'ea7'),
+    path: '/docs',
+    component: ComponentCreator('/docs', 'a1b'),
     routes: [
       {
-        path: '/Physical-AI-Humanoid-Robotics-Book/docs',
-        component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs', '0a7'),
+        path: '/docs',
+        component: ComponentCreator('/docs', '87e'),
         routes: [
           {
-            path: '/Physical-AI-Humanoid-Robotics-Book/docs',
-            component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs', 'f40'),
+            path: '/docs',
+            component: ComponentCreator('/docs', '0de'),
             routes: [
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-a',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-a', '65b'),
+                path: '/docs/appendices/appendix-a',
+                component: ComponentCreator('/docs/appendices/appendix-a', 'b89'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b', '64c'),
+                path: '/docs/appendices/appendix-b',
+                component: ComponentCreator('/docs/appendices/appendix-b', '7bb'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c', '147'),
+                path: '/docs/appendices/appendix-c',
+                component: ComponentCreator('/docs/appendices/appendix-c', 'e5b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-d',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-d', '6a4'),
+                path: '/docs/appendices/appendix-d',
+                component: ComponentCreator('/docs/appendices/appendix-d', '363'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-preface',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-preface', '30b'),
+                path: '/docs/chapters/ch0-preface',
+                component: ComponentCreator('/docs/chapters/ch0-preface', '4e7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-prerequisites',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-prerequisites', 'be0'),
+                path: '/docs/chapters/ch0-prerequisites',
+                component: ComponentCreator('/docs/chapters/ch0-prerequisites', 'f70'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch1-intro',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch1-intro', 'f7f'),
+                path: '/docs/chapters/ch1-intro',
+                component: ComponentCreator('/docs/chapters/ch1-intro', 'cb6'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch2-humanoid',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch2-humanoid', '4df'),
+                path: '/docs/chapters/ch2-humanoid',
+                component: ComponentCreator('/docs/chapters/ch2-humanoid', 'b37'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch3-ros2',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch3-ros2', 'd37'),
+                path: '/docs/chapters/ch3-ros2',
+                component: ComponentCreator('/docs/chapters/ch3-ros2', '087'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch4-sim',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch4-sim', '1c3'),
+                path: '/docs/chapters/ch4-sim',
+                component: ComponentCreator('/docs/chapters/ch4-sim', '5e3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch5-vla',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch5-vla', 'dd0'),
+                path: '/docs/chapters/ch5-vla',
+                component: ComponentCreator('/docs/chapters/ch5-vla', '95e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch6-capstone',
-                component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch6-capstone', 'e6c'),
+                path: '/docs/chapters/ch6-capstone',
+                component: ComponentCreator('/docs/chapters/ch6-capstone', '233'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -93,8 +93,8 @@ export default [
     ]
   },
   {
-    path: '/Physical-AI-Humanoid-Robotics-Book/',
-    component: ComponentCreator('/Physical-AI-Humanoid-Robotics-Book/', 'd06'),
+    path: '/',
+    component: ComponentCreator('/', '2e1'),
     exact: true
   },
   {

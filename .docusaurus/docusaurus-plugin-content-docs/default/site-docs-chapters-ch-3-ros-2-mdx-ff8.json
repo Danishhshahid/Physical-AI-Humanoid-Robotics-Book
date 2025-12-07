@@ -5,10 +5,10 @@
   "source": "@site/docs/chapters/ch3-ros2.mdx",
   "sourceDirName": "chapters",
   "slug": "/chapters/ch3-ros2",
-  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch3-ros2",
+  "permalink": "/docs/chapters/ch3-ros2",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/Danishhshahid/docs/chapters/ch3-ros2.mdx",
+  "editUrl": "https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book/tree/main/website/docs/chapters/ch3-ros2.mdx",
   "tags": [],
   "version": "current",
   "frontMatter": {
@@ -32,10 +32,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Ch2: Humanoid Basics",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch2-humanoid"
+    "permalink": "/docs/chapters/ch2-humanoid"
   },
   "next": {
     "title": "Ch4: Simulation",
-    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch4-sim"
+    "permalink": "/docs/chapters/ch4-sim"
   }
 }

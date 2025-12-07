@@ -13,8 +13,8 @@
       "calendar": "gregory",
       "path": "en",
       "translate": false,
-      "url": "https://Danishhshahid.github.io",
-      "baseUrl": "/Physical-AI-Humanoid-Robotics-Book/"
+      "url": "https://physical-ai-book.vercel.app",
+      "baseUrl": "/"
     }
   }
 }

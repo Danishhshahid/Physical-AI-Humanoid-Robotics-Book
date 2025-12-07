@@ -29,7 +29,7 @@ function HomepageHeader() {
             </Link>
             <Link
               className={styles.secondaryButton}
-              to="https://github.com/GIAIC-Community/Physical-AI-Textbook">
+              to="https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book">
               ⭐ View on GitHub
             </Link>
           </div>

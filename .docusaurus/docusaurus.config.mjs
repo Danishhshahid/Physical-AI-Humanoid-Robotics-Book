@@ -7,8 +7,8 @@ export default {
   "title": "Physical AI & Humanoid Robotics Book",
   "tagline": "Free, open-source textbook created by Danish Abbasi for the GIAIC Community",
   "favicon": "img/favicon.ico",
-  "url": "https://Danishhshahid.github.io",
-  "baseUrl": "/Physical-AI-Humanoid-Robotics-Book/",
+  "url": "https://physical-ai-book.vercel.app",
+  "baseUrl": "/",
   "organizationName": "Danishhshahid",
   "projectName": "Physical-AI-Humanoid-Robotics-Book",
   "onBrokenLinks": "warn",
@@ -26,7 +26,7 @@ export default {
       {
         "docs": {
           "sidebarPath": "./sidebars.js",
-          "editUrl": "https://github.com/Danishhshahid",
+          "editUrl": "https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book/tree/main/website",
           "remarkPlugins": [
             null
           ],

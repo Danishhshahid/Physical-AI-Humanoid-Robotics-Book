@@ -9,10 +9,10 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production URL of this site here
-  url: 'https://Danishhshahid.github.io',
+  url: 'https://physical-ai-book.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '//Physical-AI-Humanoid-Robotics-Book/',
+  // For Vercel deployment, use root path '/'
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   organizationName: 'Danishhshahid',
@@ -33,7 +33,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/Danishhshahid',
+          editUrl: 'https://github.com/Danishhshahid/Physical-AI-Humanoid-Robotics-Book/tree/main/website',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
