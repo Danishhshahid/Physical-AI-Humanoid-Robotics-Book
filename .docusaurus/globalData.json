@@ -11,26 +11,6 @@
           "mainDocId": "chapters/ch0-preface",
           "docs": [
             {
-              "id": "appendices/appendix-a",
-              "path": "/docs/appendices/appendix-a",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "appendices/appendix-b",
-              "path": "/docs/appendices/appendix-b",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "appendices/appendix-c",
-              "path": "/docs/appendices/appendix-c",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "appendices/appendix-d",
-              "path": "/docs/appendices/appendix-d",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "AUTHENTICATION_GUIDE",
               "path": "/docs/AUTHENTICATION_GUIDE"
             },

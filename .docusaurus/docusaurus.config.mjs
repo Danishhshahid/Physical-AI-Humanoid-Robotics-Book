@@ -7,7 +7,7 @@ export default {
   "title": "Physical AI & Humanoid Robotics Book",
   "tagline": "Free, open-source textbook created by Danish Abbasi for the GIAIC Community",
   "favicon": "img/favicon.ico",
-  "url": "https://physical-ai-book.vercel.app",
+  "url": "https://physical-ai-humanoid-robotics-book-tan.vercel.app",
   "baseUrl": "/",
   "organizationName": "Danishhshahid",
   "projectName": "Physical-AI-Humanoid-Robotics-Book",

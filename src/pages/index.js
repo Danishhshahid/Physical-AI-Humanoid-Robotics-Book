@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+// import { AuthModal } from '../components/AuthModal';
 import styles from './index.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
   return (
     <header className={styles.heroBanner}>
       <div className={styles.heroContent}>
@@ -33,6 +35,10 @@ function HomepageHeader() {
               ⭐ View on GitHub
             </Link>
           </div>
+          {/* <AuthModal
+            isOpen={authModalOpen}
+            onClose={() => setAuthModalOpen(false)}
+          /> */}
           <div className={styles.createdBy}>
             <p>
               Created by <strong>Danish Abbasi</strong> for the <strong>GIAIC Community</strong><br/>

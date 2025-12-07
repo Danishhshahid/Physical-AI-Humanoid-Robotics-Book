@@ -63,16 +63,6 @@ const sidebars = {
         'modules/m4-vla/m4-capstone-project',
       ],
     },
-    {
-      type: 'category',
-      label: 'Appendices',
-      items: [
-        'appendices/appendix-a',
-        'appendices/appendix-b',
-        'appendices/appendix-c',
-        'appendices/appendix-d',
-      ],
-    },
   ],
 };
 

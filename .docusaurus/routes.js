@@ -39,40 +39,16 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '63a'),
+    component: ComponentCreator('/docs', '95e'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '91f'),
+        component: ComponentCreator('/docs', '22d'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '3f3'),
+            component: ComponentCreator('/docs', '8af'),
             routes: [
-              {
-                path: '/docs/appendices/appendix-a',
-                component: ComponentCreator('/docs/appendices/appendix-a', 'b89'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/appendices/appendix-b',
-                component: ComponentCreator('/docs/appendices/appendix-b', '7bb'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/appendices/appendix-c',
-                component: ComponentCreator('/docs/appendices/appendix-c', 'e5b'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/docs/appendices/appendix-d',
-                component: ComponentCreator('/docs/appendices/appendix-d', '363'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
               {
                 path: '/docs/AUTHENTICATION_GUIDE',
                 component: ComponentCreator('/docs/AUTHENTICATION_GUIDE', '19f'),
