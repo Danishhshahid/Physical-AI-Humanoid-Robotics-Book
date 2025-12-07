@@ -34,7 +34,7 @@
     "permalink": "/docs/chapters/ch0-prerequisites"
   },
   "next": {
-    "title": "Ch2: Humanoid Basics",
-    "permalink": "/docs/chapters/ch2-humanoid"
+    "title": "M1: Overview",
+    "permalink": "/docs/modules/m1-ros2/m1-overview"
   }
 }

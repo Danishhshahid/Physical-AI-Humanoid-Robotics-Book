@@ -28,14 +28,5 @@
       "imu",
       "force sensors"
     ]
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Ch1: Intro to Physical AI",
-    "permalink": "/docs/chapters/ch1-intro"
-  },
-  "next": {
-    "title": "Ch3: ROS 2 Fundamentals",
-    "permalink": "/docs/chapters/ch3-ros2"
   }
 }

@@ -28,14 +28,5 @@
       "python",
       "rclpy"
     ]
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Ch2: Humanoid Basics",
-    "permalink": "/docs/chapters/ch2-humanoid"
-  },
-  "next": {
-    "title": "Ch4: Simulation",
-    "permalink": "/docs/chapters/ch4-sim"
   }
 }

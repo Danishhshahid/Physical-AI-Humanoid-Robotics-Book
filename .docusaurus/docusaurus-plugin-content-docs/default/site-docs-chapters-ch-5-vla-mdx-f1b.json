@@ -27,14 +27,5 @@
       "robotics"
     ],
     "image": "/img/ch5-vla-hero.png"
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Ch4: Simulation",
-    "permalink": "/docs/chapters/ch4-sim"
-  },
-  "next": {
-    "title": "Ch6: AI-Robot Pipeline",
-    "permalink": "/docs/chapters/ch6-capstone"
   }
 }

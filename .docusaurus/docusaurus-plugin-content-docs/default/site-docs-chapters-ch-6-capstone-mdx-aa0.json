@@ -27,14 +27,5 @@
       "end-to-end"
     ],
     "image": "/img/ch6-capstone-hero.png"
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Ch5: VLA Systems",
-    "permalink": "/docs/chapters/ch5-vla"
-  },
-  "next": {
-    "title": "Appendix A: RAG Setup",
-    "permalink": "/docs/appendices/appendix-a"
   }
 }

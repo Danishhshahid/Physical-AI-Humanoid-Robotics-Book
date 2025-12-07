@@ -4,15 +4,15 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'a1b'),
+    component: ComponentCreator('/docs', '739'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '87e'),
+        component: ComponentCreator('/docs', '771'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '0de'),
+            component: ComponentCreator('/docs', '5e1'),
             routes: [
               {
                 path: '/docs/appendices/appendix-a',
@@ -58,31 +58,122 @@ export default [
               },
               {
                 path: '/docs/chapters/ch2-humanoid',
-                component: ComponentCreator('/docs/chapters/ch2-humanoid', 'b37'),
-                exact: true,
-                sidebar: "tutorialSidebar"
+                component: ComponentCreator('/docs/chapters/ch2-humanoid', '80b'),
+                exact: true
               },
               {
                 path: '/docs/chapters/ch3-ros2',
-                component: ComponentCreator('/docs/chapters/ch3-ros2', '087'),
-                exact: true,
-                sidebar: "tutorialSidebar"
+                component: ComponentCreator('/docs/chapters/ch3-ros2', '725'),
+                exact: true
               },
               {
                 path: '/docs/chapters/ch4-sim',
-                component: ComponentCreator('/docs/chapters/ch4-sim', '5e3'),
-                exact: true,
-                sidebar: "tutorialSidebar"
+                component: ComponentCreator('/docs/chapters/ch4-sim', 'a10'),
+                exact: true
               },
               {
                 path: '/docs/chapters/ch5-vla',
-                component: ComponentCreator('/docs/chapters/ch5-vla', '95e'),
+                component: ComponentCreator('/docs/chapters/ch5-vla', '342'),
+                exact: true
+              },
+              {
+                path: '/docs/chapters/ch6-capstone',
+                component: ComponentCreator('/docs/chapters/ch6-capstone', '1f9'),
+                exact: true
+              },
+              {
+                path: '/docs/modules/m1-ros2/m1-nodes-topics-services',
+                component: ComponentCreator('/docs/modules/m1-ros2/m1-nodes-topics-services', 'a08'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/chapters/ch6-capstone',
-                component: ComponentCreator('/docs/chapters/ch6-capstone', '233'),
+                path: '/docs/modules/m1-ros2/m1-overview',
+                component: ComponentCreator('/docs/modules/m1-ros2/m1-overview', 'a25'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m1-ros2/m1-python-agents',
+                component: ComponentCreator('/docs/modules/m1-ros2/m1-python-agents', '638'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m1-ros2/m1-urdf-humanoids',
+                component: ComponentCreator('/docs/modules/m1-ros2/m1-urdf-humanoids', '95f'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m2-digital-twin/m2-gazebo-physics',
+                component: ComponentCreator('/docs/modules/m2-digital-twin/m2-gazebo-physics', '5f1'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m2-digital-twin/m2-overview',
+                component: ComponentCreator('/docs/modules/m2-digital-twin/m2-overview', '6d2'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m2-digital-twin/m2-sensor-simulation',
+                component: ComponentCreator('/docs/modules/m2-digital-twin/m2-sensor-simulation', '7be'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m2-digital-twin/m2-unity-rendering',
+                component: ComponentCreator('/docs/modules/m2-digital-twin/m2-unity-rendering', '00c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m3-isaac/m3-isaac-ros',
+                component: ComponentCreator('/docs/modules/m3-isaac/m3-isaac-ros', '3c6'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m3-isaac/m3-isaac-sim',
+                component: ComponentCreator('/docs/modules/m3-isaac/m3-isaac-sim', '591'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m3-isaac/m3-nav2-planning',
+                component: ComponentCreator('/docs/modules/m3-isaac/m3-nav2-planning', '4b8'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m3-isaac/m3-overview',
+                component: ComponentCreator('/docs/modules/m3-isaac/m3-overview', '567'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m4-vla/m4-capstone-project',
+                component: ComponentCreator('/docs/modules/m4-vla/m4-capstone-project', '423'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m4-vla/m4-cognitive-planning',
+                component: ComponentCreator('/docs/modules/m4-vla/m4-cognitive-planning', 'ec4'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m4-vla/m4-overview',
+                component: ComponentCreator('/docs/modules/m4-vla/m4-overview', '72c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/modules/m4-vla/m4-voice-to-action',
+                component: ComponentCreator('/docs/modules/m4-vla/m4-voice-to-action', 'f22'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }

@@ -27,14 +27,5 @@
       "domain randomization"
     ],
     "image": "/img/ch4-sim-hero.png"
-  },
-  "sidebar": "tutorialSidebar",
-  "previous": {
-    "title": "Ch3: ROS 2 Fundamentals",
-    "permalink": "/docs/chapters/ch3-ros2"
-  },
-  "next": {
-    "title": "Ch5: VLA Systems",
-    "permalink": "/docs/chapters/ch5-vla"
   }
 }
