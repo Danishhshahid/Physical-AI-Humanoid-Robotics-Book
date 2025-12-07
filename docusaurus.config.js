@@ -9,7 +9,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production URL of this site here
-  url: 'https://physical-ai-book.vercel.app',
+  url: 'https://physical-ai-humanoid-robotics-book-tan.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use root path '/'
   baseUrl: '/',

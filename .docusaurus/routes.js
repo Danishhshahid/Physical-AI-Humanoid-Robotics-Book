@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '739'),
+    component: ComponentCreator('/docs', '63a'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '771'),
+        component: ComponentCreator('/docs', '91f'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '5e1'),
+            component: ComponentCreator('/docs', '3f3'),
             routes: [
               {
                 path: '/docs/appendices/appendix-a',
@@ -72,6 +72,11 @@ export default [
                 component: ComponentCreator('/docs/appendices/appendix-d', '363'),
                 exact: true,
                 sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/AUTHENTICATION_GUIDE',
+                component: ComponentCreator('/docs/AUTHENTICATION_GUIDE', '19f'),
+                exact: true
               },
               {
                 path: '/docs/chapters/ch0-preface',

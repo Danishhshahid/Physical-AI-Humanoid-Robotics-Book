@@ -31,6 +31,10 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "AUTHENTICATION_GUIDE",
+              "path": "/docs/AUTHENTICATION_GUIDE"
+            },
+            {
               "id": "chapters/ch0-preface",
               "path": "/docs/chapters/ch0-preface",
               "sidebar": "tutorialSidebar"
