@@ -25,8 +25,18 @@ const getChatbotConfig = () => {
   let apiEndpoint = 'http://localhost:8000'; // Default for local dev
 
   if (isProduction) {
-    // Production: use the same domain for API
-    apiEndpoint = 'https://physical-ai-humanoid-robotics-book-tan.vercel.app/api';
+    // =========================================================================
+    // IMPORTANT: FOR PRODUCTION, YOU MUST DEPLOY YOUR BACKEND SEPARATELY!
+    // =========================================================================
+    // The chatbot WILL NOT WORK on Vercel until you do this.
+    // 1. Deploy your FastAPI backend to a service like Railway, Render, or Heroku.
+    //    (See DEPLOY_BACKEND_API.md for instructions)
+    // 2. Get your backend URL (e.g., https://my-chatbot-api.up.railway.app).
+    // 3. Replace the placeholder below with your actual backend URL.
+    //
+    apiEndpoint = 'https://your-backend-api-goes-here.com'; // <-- REPLACE THIS
+    // =========================================================================
+
   } else if (isDevelopment) {
     // Local development
     apiEndpoint = 'http://localhost:8000';
