@@ -1,76 +1,127 @@
-from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI
-from agents import set_tracing_disabled, function_tool
-import os
-from dotenv import load_dotenv
-from agents import enable_verbose_stdout_logging
-
-enable_verbose_stdout_logging()
-
-load_dotenv()
-set_tracing_disabled(disabled=True)
-
-gemini_api_key = os.getenv("GEMINI_API_KEY")
-provider = AsyncOpenAI(
-    api_key=gemini_api_key,
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-)
-
-model = OpenAIChatCompletionsModel(
-    model="gemini-2.0-flash",
-    openai_client=provider
-)
-
+# agent.py — Fixed for Dec 2025 Cohere Models
 import cohere
 from qdrant_client import QdrantClient
+import os
+from dotenv import load_dotenv
 
-# Initialize Cohere client
-cohere_client = cohere.Client("k0dSTz88jzAktKOLN1lNdZFY4mLHg9y57RUZIuGDL")
-# Connect to Qdrant
-qdrant_client = QdrantClient(
-    url="https://17b20767-4f6f-4658-9281-bb8da2c51092.us-east4-0.gcp.cloud.qdrant.io:6333", 
-    api_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.semax-0E_qLmg2bJpvmggx21gxOaveIFGvB38dpEU60",
-)
+load_dotenv()
+
+# === CONFIG ===
+# Prefer environment variables for keys and endpoints — fall back to previous defaults
+COHERE_API_KEY = os.getenv("COHERE_API_KEY", "jme2PFlPqBNaBq7sxXX9Q6ubM2mjsdcoWwJ9EvUw")
+QDRANT_URL = os.getenv("QDRANT_URL", "https://17b20767-4f6f-4658-9281-bb8da2c51092.us-east4-0.gcp.cloud.qdrant.io:6333")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.semax-0E_qLmg2bJpvmggx21gxOaveIFGvB38dpEU60")
+COLLECTION_NAME = "humanoid_ai_book"
+
+# Initialize clients
+co = cohere.Client(COHERE_API_KEY)
+qdrant = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 
 
-
-def get_embedding(text):
-    """Get embedding vector from Cohere Embed v3"""
-    response = cohere_client.embed(
+def retrieve_context(query: str, top_k: int = 5) -> str:
+    """Retrieve relevant chunks from Qdrant"""
+    embedding = co.embed(
         model="embed-english-v3.0",
-        input_type="search_query",  # Use search_query for queries
-        texts=[text],
-    )
-    return response.embeddings[0]  # Return the first embedding
+        input_type="search_query",      # Correct for queries
+        texts=[query]
+    ).embeddings[0]
 
-
-@function_tool
-def retrieve(query):
-    embedding = get_embedding(query)
-    result = qdrant.query_points(
-        collection_name="humanoid_ai_book",
+    results = qdrant.query_points(
+        collection_name=COLLECTION_NAME,
         query=embedding,
-        limit=5
+        limit=top_k
     )
-    return [point.payload["text"] for point in result.points]
+
+    context = "\n\n".join([point.payload["text"] for point in results.points])
+    return context if context else "No relevant information found."
 
 
+def ask_question(question: str) -> str:
+    """Simple RAG: retrieve + ask Cohere to answer using context"""
+    print(f"Question: {question}\n")
+    
+    context = retrieve_context(question)
+    
+    if "No relevant" in context:
+        return "I don't have information about that in the book."
 
-agent = Agent(
-    name="Assistant",
-    instructions="""
-You are an AI tutor for the Physical AI & Humanoid Robotics textbook.
-To answer the user question, first call the tool `retrieve` with the user query.
-Use ONLY the returned content from `retrieve` to answer.
-If the answer is not in the retrieved content, say "I don't know".
-""",
-    model=model,
-    tools=[retrieve]
-)
+    prompt = f"""
+You are an expert tutor for the "Physical AI & Humanoid Robotics" book.
+Answer the question using ONLY the following context from the book.
+
+Context:
+{context}
+
+Question: {question}
+
+Answer clearly and concisely. If unsure, say "Not specified in the book."
+"""
+
+    try:
+        # UPDATED: Use the current live model (replacement for deprecated command-r-plus)
+        response = co.chat(
+            model="command-r-plus-08-2024",   # ← FIXED: Live as of Dec 2025
+            message=prompt,
+            temperature=0.3
+        )
+        return response.text
+    except cohere.errors.NotFoundError:
+        # Fallback if even this is deprecated (unlikely, but future-proof)
+        print("Fallback model activated...")
+        response = co.chat(
+            model="command-r-08-2024",
+            message=prompt,
+            temperature=0.3
+        )
+        return response.text
+    except Exception as e:
+        return f"Error generating response: {e}"
 
 
-result = Runner.run_sync(
-    agent,
-    input="what is physical ai?",
-)
+def ask_about_selected_text(question: str, selected_text: str) -> str:
+    """Answer a question focused on user-selected text (no retrieval).
 
-print(result.final_output)
+    This uses the selected text as the only context so the model
+    answers strictly from the user's highlighted passage.
+    """
+    if not selected_text or not selected_text.strip():
+        return "No selected text provided."
+
+    prompt = f"""
+You are an expert tutor for the \"Physical AI & Humanoid Robotics\" book.
+The user has selected a specific portion of text and asked a question about it.
+
+Selected Text:
+{selected_text}
+
+Question about the selected text: {question}
+
+Answer the question directly based on the selected text. Be concise and helpful. If the question cannot be answered from the selected text, explain what the selected text covers and ask for clarification.
+"""
+
+    try:
+        response = co.chat(
+            model="command-r-plus-08-2024",
+            message=prompt,
+            temperature=0.3,
+        )
+        return response.text
+    except Exception as e:
+        return f"Error generating response from selected text: {e}"
+
+
+# === INTERACTIVE LOOP ===
+if __name__ == "__main__":
+    print("Physical AI & Humanoid Robotics Tutor Ready! (Updated for Dec 2025)\n")
+    
+    while True:
+        q = input("Ask a question (or type 'quit'): ").strip()
+        if q.lower() in ["quit", "exit", "bye"]:
+            print("Goodbye!")
+            break
+        if not q:
+            continue
+            
+        answer = ask_question(q)
+        print(f"\nAnswer: {answer}\n")
+        print("-" * 80)

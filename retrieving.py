@@ -2,7 +2,7 @@ import cohere
 from qdrant_client import QdrantClient
 
 # Initialize Cohere client
-cohere_client = cohere.Client("k0dSTz88jzAktKOLN1lNdZFY4mLHg9y57RUZIuGDL")
+cohere_client = cohere.Client("jme2PFlPqBNaBq7sxXX9Q6ubM2mjsdcoWwJ9EvUw")
 
 # Connect to Qdrant
 qdrant = QdrantClient(
@@ -22,7 +22,7 @@ def get_embedding(text):
 def retrieve(query):
     embedding = get_embedding(query)
     result = qdrant.query_points(
-        collection_name="humanoid_ai_book_two",
+        collection_name="humanoid_ai_book",
         query=embedding,
         limit=5
     )
