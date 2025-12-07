@@ -1,0 +1,25 @@
+{
+  "id": "appendices/appendix-d",
+  "title": "Appendix D: FAQ & Troubleshooting",
+  "description": "Frequently asked questions and troubleshooting guide for common issues when working through the textbook.",
+  "source": "@site/docs/appendices/appendix-d.mdx",
+  "sourceDirName": "appendices",
+  "slug": "/appendices/appendix-d",
+  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-d",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Danishhshahid/docs/appendices/appendix-d.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "appendix-d",
+    "title": "Appendix D: FAQ & Troubleshooting",
+    "sidebar_label": "Appendix D: FAQ",
+    "description": "Frequently asked questions and troubleshooting guide for common issues when working through the textbook."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Appendix C: Urdu Glossary",
+    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c"
+  }
+}

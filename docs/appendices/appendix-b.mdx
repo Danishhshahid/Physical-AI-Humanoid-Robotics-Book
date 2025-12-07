@@ -1,0 +1,376 @@
+---
+id: appendix-b
+title: "Appendix B: Free-Tier Deployment Guide"
+sidebar_label: "Appendix B: Deployment"
+description: "Deploy the Physical AI textbook to the web for free using GitHub Pages, Vercel, and Netlify."
+---
+
+## Appendix B: Free-Tier Deployment Guide
+
+This textbook is hosted on Docusaurus and can be deployed to the web for free. Here's how.
+
+### Deployment Platforms Comparison
+
+| Platform | Free Tier | Bandwidth | Build Time | SSL | CI/CD |
+|----------|-----------|-----------|-----------|-----|-------|
+| **GitHub Pages** | ✅ Unlimited | Unlimited | 5 min | ✅ | ✅ Auto |
+| **Vercel** | ✅ 1GB/mo | 100GB/mo | 2 min | ✅ | ✅ Auto |
+| **Netlify** | ✅ 300 min/mo | 100GB/mo | 3 min | ✅ | ✅ Auto |
+| **Cloudflare Pages** | ✅ Unlimited | Unlimited | 2 min | ✅ | ✅ Auto |
+
+**Recommendation**: Start with **GitHub Pages** (simplest, no config).
+
+---
+
+## Option 1: GitHub Pages (Recommended)
+
+### Prerequisites
+
+- Git and GitHub account
+- Repository with this textbook
+
+### Step 1: Configure Docusaurus
+
+Edit `website/docusaurus.config.js`:
+
+```javascript
+const config = {
+  title: 'Physical AI & Humanoid Robotics Essentials',
+  tagline: 'Free, open-source textbook for PIAIC Hackathon',
+
+  url: 'https://your-username.github.io',  // Your GitHub Pages URL
+  baseUrl: '/Physical-AI-Textbook/',          // Repository name
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+
+  organizationName: 'your-username',  // GitHub org/user
+  projectName: 'Physical-AI-Textbook',  // Repository name
+
+  // ... rest of config
+};
+```
+
+### Step 2: Deploy Script
+
+Create: `deploy.sh`
+
+```bash
+#!/bin/bash
+set -e
+
+echo "🚀 Deploying to GitHub Pages..."
+
+# Build static site
+cd website
+npm run build
+
+# Deploy using GitHub Pages action
+git add -A
+git commit -m "Deploy: $(date +%Y-%m-%d)"
+git push origin master
+
+echo "✅ Deployed! Check: https://your-username.github.io/Physical-AI-Textbook/"
+```
+
+### Step 3: GitHub Actions (Automatic Deployment)
+
+Create: `.github/workflows/deploy.yml`
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd website
+          npm install
+
+      - name: Build
+        run: |
+          cd website
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          cname: textbook.yoursite.com  # Optional custom domain
+```
+
+### Step 4: Push and Deploy
+
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin master
+
+# GitHub Actions will automatically build and deploy
+# Check Actions tab in GitHub repo for status
+```
+
+**Result**: Your site is live at `https://your-username.github.io/Physical-AI-Textbook/`
+
+---
+
+## Option 2: Vercel (Fastest Builds)
+
+### Step 1: Connect GitHub Repo
+
+1. Go to https://vercel.com
+2. Click "New Project"
+3. Import GitHub repository
+4. Select this project
+
+### Step 2: Configure
+
+Leave defaults or customize:
+
+```
+Build Command: cd website && npm run build
+Output Directory: website/build
+```
+
+### Step 3: Deploy
+
+Click "Deploy" and Vercel handles everything.
+
+**Result**: Your site is live at `https://physical-ai-textbook.vercel.app/`
+
+---
+
+## Option 3: Netlify (Most Flexible)
+
+### Step 1: Connect GitHub Repo
+
+1. Go to https://netlify.com
+2. Click "Add new site" → "Import an existing project"
+3. Select GitHub and authorize
+4. Choose this repository
+
+### Step 2: Build Settings
+
+```
+Build command: cd website && npm run build
+Publish directory: website/build
+```
+
+### Step 3: Deploy
+
+Netlify auto-deploys on every push to `master`.
+
+**Result**: Your site is live at `https://physical-ai-textbook.netlify.app/`
+
+---
+
+## Custom Domain (All Platforms)
+
+### Register a Domain
+
+- **Cheap**: Namecheap, GoDaddy, Porkbun (~$8–12/year)
+- **Free**: Freenom (limited TLDs)
+
+### Point Domain to Deployment
+
+**GitHub Pages:**
+
+Create: `CNAME` file in `website/static/CNAME`
+
+```
+textbook.yoursite.com
+```
+
+In GitHub repo settings → Pages → Custom domain → enter domain.
+
+**Vercel:**
+
+1. Go to project settings
+2. Domains → Add domain
+3. Follow DNS instructions
+
+**Netlify:**
+
+1. Domain management → Add domain
+2. Update nameservers at registrar
+
+---
+
+## SSL Certificate (HTTPS)
+
+All three platforms provide **free SSL/TLS certificates** automatically.
+
+**Verification:**
+
+```bash
+curl -I https://textbook.yoursite.com
+# Should show: HTTP/2 200 (green lock in browser)
+```
+
+---
+
+## Performance Optimization
+
+### Compress Images
+
+```bash
+# Install ImageMagick
+brew install imagemagick
+
+# Compress all PNG/JPG
+mogrify -strip -interlace Plane -quality 85% website/static/img/**/*.png
+```
+
+### Enable Caching
+
+GitHub Pages: Already cached by CDN.
+
+Vercel/Netlify: Automatic cache-busting on deploy.
+
+### Monitor Performance
+
+- **Vercel Analytics**: Built-in
+- **Netlify Analytics**: Paid add-on
+- **Google PageSpeed**: https://pagespeed.web.dev/
+
+---
+
+## Continuous Monitoring
+
+### Check Uptime
+
+Use free uptime monitoring:
+
+```bash
+# UptimeRobot (free tier, 50 monitors)
+# https://uptimerobot.com
+# Set up alert to your email
+```
+
+### Track Visitors
+
+**Google Analytics 4** (free):
+
+1. Create GA4 property
+2. Add tracking code to `docusaurus.config.js`:
+
+```javascript
+gtag: {
+  trackingID: 'G-XXXXXXXXXXXXX',
+  anonymizeIP: true,
+}
+```
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Build fails on GitHub Actions | Check logs, run `npm run build` locally first |
+| Site not updating | Clear cache: GitHub → Settings → Pages → "Purge cache" |
+| 404 errors on routes | Check `baseUrl` in `docusaurus.config.js` |
+| CSS/JS not loading | Rebuild: `npm run build` and redeploy |
+| Too slow (>3s load) | Optimize images, enable gzip compression |
+
+---
+
+## Environment Variables (Secrets)
+
+If you need API keys (e.g., for RAG chatbot):
+
+**GitHub:**
+
+1. Go to Settings → Secrets → Actions
+2. Click "New repository secret"
+3. Add: `QDRANT_URL`, `OLLAMA_HOST`, etc.
+4. Access in `.github/workflows/deploy.yml`:
+
+```yaml
+env:
+  QDRANT_URL: ${{ secrets.QDRANT_URL }}
+```
+
+**Vercel:**
+
+1. Project settings → Environment Variables
+2. Add `QDRANT_URL`, etc.
+
+**Netlify:**
+
+1. Site settings → Build & deploy → Environment
+2. Add variables
+
+---
+
+## Monthly Costs
+
+| Service | Free Tier Cost |
+|---------|---|
+| **GitHub Pages** | $0 |
+| **Vercel** | $0 |
+| **Netlify** | $0 |
+| **Domain** (Namecheap) | ~$8/year |
+| **SSL** | $0 (free with platforms) |
+| **RAG Chatbot** (Qdrant) | $0 (self-hosted) or $5–20/mo (cloud) |
+| **Total** | **~$0–1/mo** |
+
+---
+
+## Backup & Version Control
+
+### Keep Git History
+
+```bash
+# Clone with full history
+git clone --mirror https://github.com/PIAIC/Physical-AI-Textbook.git
+
+# Push to your backup
+git push --mirror https://github.com/your-username/backup.git
+```
+
+### Backup PDFs
+
+Generate PDF version:
+
+```bash
+cd website
+npm run docusaurus build:pdf
+```
+
+Store PDF in GitHub Releases for archival.
+
+---
+
+## Next Steps
+
+1. **Deploy**: Choose a platform (GitHub Pages recommended)
+2. **Monitor**: Set up analytics and uptime monitoring
+3. **Promote**: Share link on Twitter, Discord, PIAIC community
+4. **Iterate**: Make updates, they auto-deploy
+
+---
+
+**Ready to go live?** Choose your platform and deploy! 🚀
+
+---
+
+**Next**: [Appendix C: Urdu Glossary →](/docs/appendix-c)

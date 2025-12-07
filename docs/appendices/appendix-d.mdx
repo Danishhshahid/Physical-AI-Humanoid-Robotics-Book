@@ -1,0 +1,570 @@
+---
+id: appendix-d
+title: "Appendix D: FAQ & Troubleshooting"
+sidebar_label: "Appendix D: FAQ"
+description: "Frequently asked questions and troubleshooting guide for common issues when working through the textbook."
+---
+
+## Appendix D: FAQ & Troubleshooting
+
+This appendix addresses common questions and issues students encounter while working through the textbook.
+
+---
+
+## Installation & Setup
+
+### Q1: I don't have a GPU. Can I still run the code?
+
+**A:** Yes, but slower. Most chapters work on CPU:
+
+- **Chapter 1**: No code, just concepts ✓
+- **Chapter 2**: Pure Python (scipy), runs on CPU ✓
+- **Chapter 3**: ROS 2 on CPU ✓
+- **Chapter 4**: Gazebo on CPU (slower simulation, but works) ✓
+- **Chapter 5**: CLIP and Llama 3 on CPU (very slow, 5–10 sec per query)
+  - **Workaround**: Use Colab GPU: https://colab.research.google.com (free tier with T4 GPU)
+- **Chapter 6**: Monitoring/deployment, no GPU needed ✓
+
+**Minimum specs**: 8GB RAM, 4-core CPU, 50GB disk space.
+
+### Q2: I'm on Windows. Do I need WSL?
+
+**A:** Recommended but not required:
+
+- **With WSL2** (Windows Subsystem for Linux): Run Ubuntu natively on Windows
+  ```bash
+  # Install WSL2
+  wsl --install
+
+  # Ubuntu shell inside Windows
+  wsl
+  ```
+  Then follow Linux instructions.
+
+- **Without WSL**: Use native Windows tools
+  - ROS 2 Windows port (limited)
+  - Docker Desktop (recommended)
+  - Gazebo less stable
+
+**Best approach**: Use Docker for all services (Windows/Mac/Linux all the same).
+
+### Q3: How do I install ROS 2 on macOS?
+
+**A:** ROS 2 officially supports macOS 11+:
+
+```bash
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install ROS 2 (Humble)
+brew install ros2
+
+# Verify
+ros2 --version
+```
+
+**Note**: Some features (Gazebo, certain hardware interfaces) work better on Linux.
+
+---
+
+## ROS 2 Issues
+
+### Q4: ROS 2 nodes aren't discovering each other. Why?
+
+**A:** Usually a DDS/network issue:
+
+1. **Check domain ID**:
+   ```bash
+   echo $ROS_DOMAIN_ID  # Should be 0 (default)
+   export ROS_DOMAIN_ID=0  # Set if missing
+   ```
+
+2. **Check localhost binding**:
+   ```bash
+   # Make sure NOT set to localhost-only
+   echo $ROS_LOCALHOST_ONLY  # Should be empty or 0
+
+   # If set, unset it
+   unset ROS_LOCALHOST_ONLY
+   ```
+
+3. **Check firewall**:
+   ```bash
+   # macOS
+   sudo System Preferences → Security & Privacy → Firewall Options
+
+   # Linux (UFW)
+   sudo ufw allow 7400:7410/udp  # DDS ports
+   ```
+
+4. **Test with talker/listener**:
+   ```bash
+   # Terminal 1
+   ros2 run demo_nodes_cpp talker
+
+   # Terminal 2
+   ros2 run demo_nodes_py listener
+
+   # Should see messages
+   ```
+
+### Q5: `ros2 topic list` returns nothing. How do I debug?
+
+**A:** Step-by-step:
+
+```bash
+# 1. Check if any nodes are running
+ros2 node list
+# If empty, no nodes are active
+
+# 2. Check ROS_DOMAIN_ID
+echo $ROS_DOMAIN_ID
+
+# 3. Try a simple publisher
+ros2 topic pub /test std_msgs/msg/String data:"hello"
+
+# Terminal 2:
+ros2 topic echo /test
+# If nothing, DDS discovery is broken
+
+# 4. Check DDS config
+cat ~/.config/cyclonedds/dds.xml  # If exists, may be misconfigured
+```
+
+### Q6: I get "Could not import 'message'". What's wrong?
+
+**A:** The ROS 2 message package isn't installed:
+
+```bash
+# Install message generation
+sudo apt install ros-humble-std-msgs ros-humble-geometry-msgs
+
+# Or in Python:
+pip install rclpy std-msgs geometry-msgs
+
+# Rebuild workspace
+colcon build
+source install/setup.bash
+```
+
+---
+
+## Gazebo Simulation Issues
+
+### Q7: Gazebo won't start. Error: "Could not load plugin".
+
+**A:** Missing dependencies:
+
+```bash
+# Install full Gazebo and ROS 2 integration
+sudo apt install gazebo ros-humble-gazebo-ros
+
+# Verify
+gazebo --version
+
+# Try simple world
+gazebo worlds/empty.world
+```
+
+If still fails:
+
+```bash
+# Reset Gazebo config
+rm -rf ~/.gazebo/
+
+# Reinstall
+sudo apt --fix-broken install
+sudo apt install gazebo
+```
+
+### Q8: Simulation runs at 0.1× real-time (very slow).
+
+**A:** Physics solver is struggling:
+
+1. **Reduce simulation step size**:
+   ```xml
+   <!-- In world.sdf -->
+   <physics name="default_physics" type="ode">
+     <max_step_size>0.01</max_step_size>  <!-- Increase from 0.001 -->
+     <real_time_factor>1.0</real_time_factor>
+   </physics>
+   ```
+
+2. **Use faster physics engine**:
+   ```xml
+   <physics type="bullet">  <!-- Faster than ODE -->
+   ```
+
+3. **Reduce collision complexity**:
+   - Use simple collision shapes (boxes, cylinders) instead of complex meshes
+   - Reduce number of objects in world
+
+4. **Check GPU utilization**:
+   ```bash
+   nvidia-smi  # If GPU: 0%, Gazebo is on CPU
+   ```
+
+### Q9: Robot falls through the floor in Gazebo.
+
+**A:** Ground plane friction is too low:
+
+```xml
+<!-- In world.sdf -->
+<model name="ground_plane">
+  <surface>
+    <friction>
+      <ode>
+        <mu>1.0</mu>     <!-- Increase from 0.3 -->
+        <mu2>1.0</mu2>
+      </ode>
+    </friction>
+  </surface>
+</model>
+```
+
+Or robot is too heavy for joints:
+
+```xml
+<!-- In URDF, check link inertia -->
+<link name="base_link">
+  <inertial>
+    <mass value="50"/>  <!-- Too heavy for typical motors -->
+    <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+  </inertial>
+</link>
+```
+
+---
+
+## Vision & AI Issues
+
+### Q10: CLIP inference is extremely slow (30+ seconds).
+
+**A:** Running on CPU. Use GPU or optimize:
+
+1. **Use GPU** (if available):
+   ```python
+   model = clip.load("ViT-B/32", device="cuda")
+   # Should be ~50ms instead of 5+ seconds
+   ```
+
+2. **Use cheaper model** (if GPU not available):
+   ```python
+   model, preprocess = clip.load("ViT-B/32", device="cuda")
+   # ViT-B/32: 86M params (fast)
+   # ViT-B/16: 86M params (accurate but slower)
+   # RN50: 50M params (CPU-friendly)
+   ```
+
+3. **Batch inference**:
+   ```python
+   # Instead of encoding one image at a time
+   images = torch.stack([preprocess(img) for img in batch])
+   embeddings = model.encode_image(images)  # 10× faster
+   ```
+
+### Q11: Llama 3 refuses to run local queries. Memory error?
+
+**A:** Llama 3 8B requires ~8GB VRAM:
+
+```bash
+# Check available memory
+free -h  # Linux
+vm_stat | grep "page size"  # macOS
+
+# If <8GB, use smaller model
+ollama pull mistral  # 7B, ~4GB
+# Or
+ollama pull neural-chat  # Smaller, faster
+```
+
+Or run quantized version:
+
+```bash
+# 4-bit quantization (4× smaller, slower)
+ollama pull llama3-q4
+```
+
+### Q12: "CUDA out of memory" when using CLIP + Llama together.
+
+**A:** Split between CPU/GPU or use smaller models:
+
+```python
+# CLIP on GPU
+clip_model = clip.load("ViT-B/32", device="cuda")
+
+# Llama on CPU (or smaller Llama)
+# Ollama automatically offloads, so just reduce layers:
+# Edit ~/.ollama/modelfile:
+# PARAMETER main_gpu 0
+# PARAMETER load_progress true
+```
+
+Or use quantized models for both:
+
+```bash
+ollama pull llama3-q4
+```
+
+---
+
+## Code & Python Issues
+
+### Q13: `ImportError: No module named 'rclpy'`.
+
+**A:** ROS 2 Python libraries not installed:
+
+```bash
+sudo apt install python3-rclpy
+
+# Or via pip
+pip install rclpy
+
+# Or build from source
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/ros2/rclpy.git
+cd ..
+colcon build
+source install/setup.bash
+```
+
+### Q14: My code worked yesterday but not today. "ModuleNotFoundError".
+
+**A:** Virtual environment activated/deactivated:
+
+```bash
+# Check if in virtual environment
+which python  # Should show path to venv
+
+# If not in venv:
+source venv/bin/activate  # macOS/Linux
+source venv\Scripts\activate  # Windows
+
+# Reinstall packages
+pip install -r requirements.txt
+```
+
+### Q15: NumPy operations are slow. Any speed tips?
+
+**A:** Use vectorization instead of loops:
+
+```python
+# ❌ Slow (loop)
+for i in range(len(q)):
+    q[i] = q[i] + dt * qdot[i]
+
+# ✓ Fast (vectorized)
+q = q + dt * qdot
+
+# Check dtype
+q.dtype  # Should be float32 or float64, not object
+```
+
+---
+
+## Deployment Issues
+
+### Q16: Docker build fails. "No space left on device".
+
+**A:** Docker disk is full:
+
+```bash
+# Clean up unused images/containers
+docker system prune -a
+
+# Check space
+docker system df
+
+# Increase Docker disk allocation:
+# Docker Desktop → Settings → Resources → Disk Image Size
+```
+
+### Q17: GitHub Actions deploy fails. "Permission denied".
+
+**A:** Missing GitHub token permissions:
+
+1. Go to GitHub repo → Settings → Secrets and variables → Actions
+2. Add: `GITHUB_TOKEN` (should be pre-configured, but verify)
+3. Or re-authenticate:
+   ```bash
+   git remote set-url origin git@github.com:YOUR_USERNAME/REPO.git
+   ```
+
+### Q18: Vercel deploy is slow (>5 min build time).
+
+**A:** Optimize build:
+
+1. Skip unnecessary dependencies:
+   ```bash
+   npm ci --omit=dev  # Install only production packages
+   ```
+
+2. Use build caching:
+   ```bash
+   # vercel.json
+   {
+     "buildCommand": "npm run build",
+     "cacheMaxAge": 86400
+   }
+   ```
+
+3. Reduce node_modules:
+   ```bash
+   npm install --production
+   ```
+
+---
+
+## General Questions
+
+### Q19: I want to use a real robot. Which should I buy?
+
+**A:** Options by price/accessibility:
+
+| Robot | Price | Access | Where to Buy |
+|-------|-------|--------|---|
+| **UR10e** (Industrial arm) | $35k–50k | Research labs | Universal Robots |
+| **Franka Emika Panda** | $25k–35k | Research labs | Franka Emika |
+| **Tesla Optimus** | $20k–25k (2025 target) | Pre-order | Tesla |
+| **Figure AI 01** | TBD (enterprise only) | Waitlist | Figure AI |
+| **Boston Dynamics Atlas** | Expensive | Research partnerships | Boston Dynamics |
+| **Open Manipulator** | $500–1500 | DIY kits | ROBOTIS |
+| **Dobot CR10** | $3k–5k | Start-up friendly | Dobot |
+| **Simulation (free)** | $0 | Your laptop | Gazebo + ROS 2 |
+
+**Recommendation**: Start with **simulation** (this textbook), then apply for research access to real hardware.
+
+### Q20: Can I use the code from this textbook in commercial projects?
+
+**A:** Yes! The textbook is MIT licensed:
+
+- ✅ Use commercially
+- ✅ Modify freely
+- ✅ Distribute modified versions
+- ⚠️ Mention original authors (cite the textbook)
+- ⚠️ Keep MIT license in derivative works
+
+See: https://opensource.org/licenses/MIT
+
+### Q21: I found a bug in the code. How do I report it?
+
+**A:** Open a GitHub issue:
+
+1. Go to: https://github.com/PIAIC/Physical-AI-Textbook/issues/new
+2. Title: "Bug: [Chapter] [brief description]"
+3. Description:
+   ```
+   **Chapter**: 2 (Humanoid Robotics)
+   **Code location**: Line 45 of ch2-humanoid.mdx
+   **Error**: ZeroDivisionError when computing IK
+   **Expected**: Should return None or error message
+   **Actual**: Crashes with division by zero
+
+   **Minimal reproduction**:
+   ```python
+   # Code that reproduces the issue
+   ```
+   ```
+
+### Q22: How do I cite this textbook in academic papers?
+
+**A:** Use this BibTeX entry:
+
+```bibtex
+@book{piaic_2025,
+  title={Physical AI \& Humanoid Robotics Essentials},
+  author={PIAIC Hackathon Community},
+  year={2025},
+  publisher={Open Source},
+  url={https://github.com/PIAIC/Physical-AI-Textbook},
+  license={MIT}
+}
+```
+
+Or APA format:
+
+```
+PIAIC Hackathon Community. (2025). Physical AI & Humanoid Robotics Essentials. Retrieved from https://github.com/PIAIC/Physical-AI-Textbook
+```
+
+### Q23: Can I contribute to the textbook?
+
+**A:** Absolutely! We welcome:
+
+- ✅ Bug fixes and typo corrections
+- ✅ New code examples or improved explanations
+- ✅ Translations to other languages
+- ✅ New chapters or appendices
+- ✅ Updated benchmarks (2025 robot specs)
+- ✅ Better visualizations/diagrams
+
+**Process**:
+
+1. Fork: https://github.com/PIAIC/Physical-AI-Textbook
+2. Create branch: `git checkout -b my-improvement`
+3. Make changes
+4. Submit pull request with description
+5. We review and merge!
+
+---
+
+## Emergency Contacts
+
+**Still stuck?** Try these resources:
+
+| Resource | Link |
+|----------|------|
+| **ROS Discourse** (50k+ experts) | https://discourse.ros.org |
+| **PIAIC Discord** (community support) | https://discord.gg/piaic |
+| **Gazebo GitHub Issues** | https://github.com/gazebosim/gz-sim/issues |
+| **Ollama GitHub** | https://github.com/ollama/ollama/discussions |
+| **Stack Overflow** (tag: robotics, ros2) | https://stackoverflow.com/questions/tagged/robotics |
+| **This Textbook Issues** | https://github.com/PIAIC/Physical-AI-Textbook/issues |
+
+---
+
+## Troubleshooting Checklist
+
+**When something breaks:**
+
+1. ☐ Check error message carefully (Google it)
+2. ☐ Verify ROS_DOMAIN_ID and PATH variables
+3. ☐ Restart all services: `docker-compose down && docker-compose up`
+4. ☐ Clear caches: `rm -rf ~/.gazebo ~/.ros`
+5. ☐ Update packages: `sudo apt update && sudo apt upgrade`
+6. ☐ Check disk space: `df -h`
+7. ☐ Check RAM: `free -h`
+8. ☐ Read the docs: https://docs.ros.org/en/humble/
+9. ☐ Ask on Discord/Discourse (include error output)
+10. ☐ File GitHub issue if it's a bug
+
+---
+
+## Success Tips
+
+✅ **Do's:**
+- Run code examples step-by-step (don't skip lines)
+- Test locally before deploying
+- Use version control (git)
+- Document what you're trying
+- Ask for help early
+- Join the community
+
+❌ **Don'ts:**
+- Copy-paste entire files without understanding
+- Skip the Prerequisites chapter
+- Try to run everything at once
+- Modify code without testing
+- Ignore error messages
+- Compare your progress to others
+
+---
+
+**Having trouble?** We're here to help! 🤝
+
+**Next**: Build amazing robots! 🚀
+
+---
+
+**Return to**: [Main Textbook](/docs/ch1-intro)

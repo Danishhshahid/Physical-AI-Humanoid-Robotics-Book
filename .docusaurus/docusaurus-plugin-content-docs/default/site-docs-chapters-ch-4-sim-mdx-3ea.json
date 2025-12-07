@@ -1,0 +1,40 @@
+{
+  "id": "chapters/ch4-sim",
+  "title": "Chapter 4: Digital Twin Simulation with Gazebo",
+  "description": "Master physics simulation, sensor modeling, and sim-to-real transfer for humanoid robotics using Gazebo and URDF.",
+  "source": "@site/docs/chapters/ch4-sim.mdx",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/ch4-sim",
+  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch4-sim",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Danishhshahid/docs/chapters/ch4-sim.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ch4-sim",
+    "title": "Chapter 4: Digital Twin Simulation with Gazebo",
+    "sidebar_label": "Ch4: Simulation",
+    "description": "Master physics simulation, sensor modeling, and sim-to-real transfer for humanoid robotics using Gazebo and URDF.",
+    "keywords": [
+      "gazebo",
+      "urdf",
+      "simulation",
+      "digital twin",
+      "sim-to-real",
+      "physics engine",
+      "sensor simulation",
+      "domain randomization"
+    ],
+    "image": "/img/ch4-sim-hero.png"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ch3: ROS 2 Fundamentals",
+    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch3-ros2"
+  },
+  "next": {
+    "title": "Ch5: VLA Systems",
+    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch5-vla"
+  }
+}

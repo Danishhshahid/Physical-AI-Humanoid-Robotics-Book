@@ -1,0 +1,29 @@
+{
+  "id": "appendices/appendix-c",
+  "title": "Appendix C: Urdu Glossary & Localization",
+  "description": "Urdu translations of key robotics and AI terms used throughout the textbook.",
+  "source": "@site/docs/appendices/appendix-c.mdx",
+  "sourceDirName": "appendices",
+  "slug": "/appendices/appendix-c",
+  "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Danishhshahid/docs/appendices/appendix-c.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "appendix-c",
+    "title": "Appendix C: Urdu Glossary & Localization",
+    "sidebar_label": "Appendix C: Urdu Glossary",
+    "description": "Urdu translations of key robotics and AI terms used throughout the textbook."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Appendix B: Deployment",
+    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b"
+  },
+  "next": {
+    "title": "Appendix D: FAQ",
+    "permalink": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-d"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/Physical-AI-Humanoid-Robotics-Book/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/Physical-AI-Humanoid-Robotics-Book/docs",
+          "mainDocId": "chapters/ch0-preface",
+          "docs": [
+            {
+              "id": "appendices/appendix-a",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-a",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "appendices/appendix-b",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-b",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "appendices/appendix-c",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-c",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "appendices/appendix-d",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/appendices/appendix-d",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch0-preface",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-preface",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch0-prerequisites",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-prerequisites",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch1-intro",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch1-intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch2-humanoid",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch2-humanoid",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch3-ros2",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch3-ros2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch4-sim",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch4-sim",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch5-vla",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch5-vla",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ch6-capstone",
+              "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch6-capstone",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/Physical-AI-Humanoid-Robotics-Book/docs/chapters/ch0-preface",
+                "label": "chapters/ch0-preface"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  },
+  "docusaurus-plugin-google-gtag": {
+    "default": {
+      "trackingID": [
+        "G-XXXXXXXXXXXXX"
+      ],
+      "anonymizeIP": true,
+      "id": "default"
+    }
+  }
+}
