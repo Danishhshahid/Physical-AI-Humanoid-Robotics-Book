@@ -3,13 +3,21 @@
   "outputDirectory": "build",
   "functions": {
     "api/**/*.py": {
-      "runtime": "python@3.12"
+      "runtime": "python3.12"
     }
   },
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/:path*.py"
+      "source": "/api/ask",
+      "destination": "/api/ask.py"
+    },
+    {
+      "source": "/api/ask-selected-text",
+      "destination": "/api/ask-selected-text.py"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/health.py"
     }
   ],
   "headers": [
