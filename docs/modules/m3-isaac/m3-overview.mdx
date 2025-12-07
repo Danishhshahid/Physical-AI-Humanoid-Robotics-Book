@@ -17,10 +17,10 @@ Think of it as **the brain** that perceives the world, plans paths, and makes de
 
 ## Why NVIDIA Isaac?
 
-- 🎮 **RTX rendering**: Photorealistic graphics → better training data
-- ⚡ **GPU acceleration**: VSLAM runs on NVIDIA GPU (10× faster)
-- 🤖 **ROS 2 native**: Seamless integration with ROS 2 middleware
-- 🔄 **Sim-to-real**: Trained models deploy directly to real robots
+-  **RTX rendering**: Photorealistic graphics → better training data
+-  **GPU acceleration**: VSLAM runs on NVIDIA GPU (10× faster)
+-  **ROS 2 native**: Seamless integration with ROS 2 middleware
+-  **Sim-to-real**: Trained models deploy directly to real robots
 
 ## Module Structure
 
@@ -45,32 +45,32 @@ Think of it as **the brain** that perceives the world, plans paths, and makes de
 ## Architecture
 
 ```
-┌─────────────────────────────────────────┐
-│  NVIDIA Isaac Sim (Perception Training)  │
-│  - Synthetic data generation              │
-│  - Domain randomization                   │
-│  - High-quality rendered images           │
-└─────────────────────────────────────────┘
+
+  NVIDIA Isaac Sim (Perception Training)  
+  - Synthetic data generation              
+  - Domain randomization                   
+  - High-quality rendered images           
+
                     ↓
          Trained Vision Models
                     ↓
-┌─────────────────────────────────────────┐
-│   Isaac ROS (GPU-Accelerated Pipeline)   │
-│  - VSLAM (Camera + IMU → Localization)   │
-│  - Object Detection (Real-time)          │
-│  - Depth Estimation                      │
-└─────────────────────────────────────────┘
+
+   Isaac ROS (GPU-Accelerated Pipeline)   
+  - VSLAM (Camera + IMU → Localization)   
+  - Object Detection (Real-time)          
+  - Depth Estimation                      
+
                     ↓
          Scene Understanding
                     ↓
-┌─────────────────────────────────────────┐
-│      Nav2 (Path Planning)                 │
-│  - Global path planning (RRT*)           │
-│  - Local trajectory planning (DWA)      │
-│  - Cost maps and obstacle layers         │
-└─────────────────────────────────────────┘
+
+      Nav2 (Path Planning)                 
+  - Global path planning (RRT*)           
+  - Local trajectory planning (DWA)      
+  - Cost maps and obstacle layers         
+
                     ↓
-         🤖 Humanoid executes motion
+          Humanoid executes motion
 ```
 
 ## Learning Objectives

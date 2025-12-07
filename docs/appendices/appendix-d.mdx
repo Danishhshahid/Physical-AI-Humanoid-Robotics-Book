@@ -17,13 +17,13 @@ This appendix addresses common questions and issues students encounter while wor
 
 **A:** Yes, but slower. Most chapters work on CPU:
 
-- **Chapter 1**: No code, just concepts ✓
-- **Chapter 2**: Pure Python (scipy), runs on CPU ✓
-- **Chapter 3**: ROS 2 on CPU ✓
-- **Chapter 4**: Gazebo on CPU (slower simulation, but works) ✓
+- **Chapter 1**: No code, just concepts 
+- **Chapter 2**: Pure Python (scipy), runs on CPU 
+- **Chapter 3**: ROS 2 on CPU 
+- **Chapter 4**: Gazebo on CPU (slower simulation, but works) 
 - **Chapter 5**: CLIP and Llama 3 on CPU (very slow, 5–10 sec per query)
   - **Workaround**: Use Colab GPU: https://colab.research.google.com (free tier with T4 GPU)
-- **Chapter 6**: Monitoring/deployment, no GPU needed ✓
+- **Chapter 6**: Monitoring/deployment, no GPU needed 
 
 **Minimum specs**: 8GB RAM, 4-core CPU, 50GB disk space.
 
@@ -350,11 +350,11 @@ pip install -r requirements.txt
 **A:** Use vectorization instead of loops:
 
 ```python
-# ❌ Slow (loop)
+#  Slow (loop)
 for i in range(len(q)):
     q[i] = q[i] + dt * qdot[i]
 
-# ✓ Fast (vectorized)
+#  Fast (vectorized)
 q = q + dt * qdot
 
 # Check dtype
@@ -439,11 +439,11 @@ docker system df
 
 **A:** Yes! The textbook is MIT licensed:
 
-- ✅ Use commercially
-- ✅ Modify freely
-- ✅ Distribute modified versions
-- ⚠️ Mention original authors (cite the textbook)
-- ⚠️ Keep MIT license in derivative works
+-  Use commercially
+-  Modify freely
+-  Distribute modified versions
+-  Mention original authors (cite the textbook)
+-  Keep MIT license in derivative works
 
 See: https://opensource.org/licenses/MIT
 
@@ -492,12 +492,12 @@ PIAIC Hackathon Community. (2025). Physical AI & Humanoid Robotics Essentials. R
 
 **A:** Absolutely! We welcome:
 
-- ✅ Bug fixes and typo corrections
-- ✅ New code examples or improved explanations
-- ✅ Translations to other languages
-- ✅ New chapters or appendices
-- ✅ Updated benchmarks (2025 robot specs)
-- ✅ Better visualizations/diagrams
+-  Bug fixes and typo corrections
+-  New code examples or improved explanations
+-  Translations to other languages
+-  New chapters or appendices
+-  Updated benchmarks (2025 robot specs)
+-  Better visualizations/diagrams
 
 **Process**:
 
@@ -528,22 +528,22 @@ PIAIC Hackathon Community. (2025). Physical AI & Humanoid Robotics Essentials. R
 
 **When something breaks:**
 
-1. ☐ Check error message carefully (Google it)
-2. ☐ Verify ROS_DOMAIN_ID and PATH variables
-3. ☐ Restart all services: `docker-compose down && docker-compose up`
-4. ☐ Clear caches: `rm -rf ~/.gazebo ~/.ros`
-5. ☐ Update packages: `sudo apt update && sudo apt upgrade`
-6. ☐ Check disk space: `df -h`
-7. ☐ Check RAM: `free -h`
-8. ☐ Read the docs: https://docs.ros.org/en/humble/
-9. ☐ Ask on Discord/Discourse (include error output)
-10. ☐ File GitHub issue if it's a bug
+1.  Check error message carefully (Google it)
+2.  Verify ROS_DOMAIN_ID and PATH variables
+3.  Restart all services: `docker-compose down && docker-compose up`
+4.  Clear caches: `rm -rf ~/.gazebo ~/.ros`
+5.  Update packages: `sudo apt update && sudo apt upgrade`
+6.  Check disk space: `df -h`
+7.  Check RAM: `free -h`
+8.  Read the docs: https://docs.ros.org/en/humble/
+9.  Ask on Discord/Discourse (include error output)
+10.  File GitHub issue if it's a bug
 
 ---
 
 ## Success Tips
 
-✅ **Do's:**
+ **Do's:**
 - Run code examples step-by-step (don't skip lines)
 - Test locally before deploying
 - Use version control (git)
@@ -551,7 +551,7 @@ PIAIC Hackathon Community. (2025). Physical AI & Humanoid Robotics Essentials. R
 - Ask for help early
 - Join the community
 
-❌ **Don'ts:**
+ **Don'ts:**
 - Copy-paste entire files without understanding
 - Skip the Prerequisites chapter
 - Try to run everything at once
@@ -561,9 +561,9 @@ PIAIC Hackathon Community. (2025). Physical AI & Humanoid Robotics Essentials. R
 
 ---
 
-**Having trouble?** We're here to help! 🤝
+**Having trouble?** We're here to help! 
 
-**Next**: Build amazing robots! 🚀
+**Next**: Build amazing robots! 
 
 ---
 

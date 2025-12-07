@@ -9,10 +9,10 @@ description: "Implement hardware-accelerated perception with Isaac ROS: VSLAM, o
 
 **Isaac ROS** provides GPU-accelerated perception nodes for ROS 2:
 
-- 🎯 **VSLAM**: Visual SLAM using camera + IMU (10× faster than CPU)
-- 🚨 **Object Detection**: Real-time YOLOv8 on GPU
-- 📏 **Depth Estimation**: Stereo vision with GPU acceleration
-- ⚡ **Hardware-optimized**: Runs on NVIDIA Jetson or data center GPUs
+-  **VSLAM**: Visual SLAM using camera + IMU (10× faster than CPU)
+-  **Object Detection**: Real-time YOLOv8 on GPU
+-  **Depth Estimation**: Stereo vision with GPU acceleration
+-  **Hardware-optimized**: Runs on NVIDIA Jetson or data center GPUs
 
 ## Installation
 
@@ -31,7 +31,7 @@ sudo apt-get install ros-humble-isaac-ros-visual-slam \
 **VSLAM** localizes the robot by tracking camera features:
 
 ```
-📷 Camera Feed → Feature Extraction → Feature Matching → Localization
+ Camera Feed → Feature Extraction → Feature Matching → Localization
      ↓
      IMU (gyroscope) stabilizes rotation estimates
 ```

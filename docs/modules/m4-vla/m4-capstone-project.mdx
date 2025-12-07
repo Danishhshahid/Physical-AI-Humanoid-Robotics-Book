@@ -29,44 +29,44 @@ description: "Build a complete end-to-end autonomous humanoid system. Voice → 
 ## System Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                    Voice Input (Microphone)                  │
-└──────────────────────────────────────────────────────────────┘
+
+                    Voice Input (Microphone)                  
+
                             ↓
-┌──────────────────────────────────────────────────────────────┐
-│              Whisper: Speech-to-Text (Module 4.1)            │
-└──────────────────────────────────────────────────────────────┘
+
+              Whisper: Speech-to-Text (Module 4.1)            
+
                             ↓
-┌──────────────────────────────────────────────────────────────┐
-│          Llama 3: Task Planning (Module 4.2)                │
-│          Input: "Organize the shelf"                        │
-│          Output: JSON task plan                             │
-└──────────────────────────────────────────────────────────────┘
+
+          Llama 3: Task Planning (Module 4.2)                
+          Input: "Organize the shelf"                        
+          Output: JSON task plan                             
+
                             ↓
-┌──────────────────────────────────────────────────────────────┐
-│              Step Executor & Coordinator                      │
-│  - Perception: YOLO object detection + CLIP                │
-│  - Localization: VSLAM (Isaac ROS)                         │
-│  - Navigation: Nav2 path planning                          │
-│  - Manipulation: Inverse kinematics + trajectory planning  │
-│  - Safety: Constraint checking                            │
-└──────────────────────────────────────────────────────────────┘
+
+              Step Executor & Coordinator                      
+  - Perception: YOLO object detection + CLIP                
+  - Localization: VSLAM (Isaac ROS)                         
+  - Navigation: Nav2 path planning                          
+  - Manipulation: Inverse kinematics + trajectory planning  
+  - Safety: Constraint checking                            
+
                             ↓
-┌──────────────────────────────────────────────────────────────┐
-│              ROS 2 Controllers (Module 1)                    │
-│  - Joint controllers                                       │
-│  - Gripper control                                        │
-│  - Mobile base control                                    │
-└──────────────────────────────────────────────────────────────┘
+
+              ROS 2 Controllers (Module 1)                    
+  - Joint controllers                                       
+  - Gripper control                                        
+  - Mobile base control                                    
+
                             ↓
-┌──────────────────────────────────────────────────────────────┐
-│           Gazebo Simulation (Module 2) / Real Robot         │
-│  - Physics simulation                                       │
-│  - Sensor data                                             │
-│  - Actuator feedback                                       │
-└──────────────────────────────────────────────────────────────┘
+
+           Gazebo Simulation (Module 2) / Real Robot         
+  - Physics simulation                                       
+  - Sensor data                                             
+  - Actuator feedback                                       
+
                             ↓
-                     🤖 Task Complete!
+                      Task Complete!
 ```
 
 ## Implementation Guide
@@ -254,10 +254,10 @@ class StepExecutor(Node):
 ### Success Metrics:
 
 **Autonomous Task Execution**:
-- ✅ **Level 1**: Execute single-step commands ("Pick up the cube")
-- ✅ **Level 2**: Execute multi-step tasks with planning ("Put the cube on the shelf")
-- ✅ **Level 3**: Handle ambiguity and ask clarifications ("Should I arrange by color or size?")
-- ✅ **Level 4**: Recover from failures and replan ("Object not found, searching alternative location...")
+-  **Level 1**: Execute single-step commands ("Pick up the cube")
+-  **Level 2**: Execute multi-step tasks with planning ("Put the cube on the shelf")
+-  **Level 3**: Handle ambiguity and ask clarifications ("Should I arrange by color or size?")
+-  **Level 4**: Recover from failures and replan ("Object not found, searching alternative location...")
 
 **Robustness**:
 - Task success rate > 80% in simulation
@@ -319,13 +319,13 @@ Document your system:
 
 You've built a **production-grade autonomous humanoid system** that demonstrates:
 
-✅ Natural language understanding (Whisper + Llama 3)
-✅ Semantic task planning with LLMs
-✅ Robust perception (YOLO + CLIP + VSLAM)
-✅ Safe path planning (Nav2)
-✅ Precise manipulation (IK + trajectory planning)
-✅ Real-time ROS 2 integration
-✅ Sim-to-real ready (Gazebo + domain randomization)
+ Natural language understanding (Whisper + Llama 3)
+ Semantic task planning with LLMs
+ Robust perception (YOLO + CLIP + VSLAM)
+ Safe path planning (Nav2)
+ Precise manipulation (IK + trajectory planning)
+ Real-time ROS 2 integration
+ Sim-to-real ready (Gazebo + domain randomization)
 
 This is the **future of robotics**: humanoids that understand and execute natural language commands.
 
@@ -339,14 +339,14 @@ This is the **future of robotics**: humanoids that understand and execute natura
 
 ---
 
-## Module 4 Complete! 🎉
+## Module 4 Complete! 
 
 You've completed all 4 modules:
 
-✅ Module 1: The Robotic Nervous System (ROS 2)
-✅ Module 2: The Digital Twin (Gazebo & Unity)
-✅ Module 3: The AI-Robot Brain (NVIDIA Isaac)
-✅ Module 4: Vision-Language-Action (VLA)
+ Module 1: The Robotic Nervous System (ROS 2)
+ Module 2: The Digital Twin (Gazebo & Unity)
+ Module 3: The AI-Robot Brain (NVIDIA Isaac)
+ Module 4: Vision-Language-Action (VLA)
 
 **You are now ready to build autonomous humanoid robots.**
 

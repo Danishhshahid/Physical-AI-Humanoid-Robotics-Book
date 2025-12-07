@@ -48,14 +48,14 @@ A **VLA system** has three components:
 
 ```mermaid
 graph LR
-    Image["📸 RGB Image<br/>(480×640)"]
-    Text["📝 Language<br/>Instruction"]
+    Image[" RGB Image<br/>(480×640)"]
+    Text[" Language<br/>Instruction"]
     ImageEnc["CLIP Vision Encoder<br/>(ViT-B/32)<br/>→ 512-D"]
     TextEnc["Llama 3<br/>Language Encoder<br/>→ 4096-D"]
     Fusion["Multimodal Fusion<br/>(Concatenate)"]
     Planner["Trajectory Planner<br/>(MLP 2-layer)"]
-    Actions["🤖 Robot Actions<br/>(Joint Angles)"]
-    Safety["⚠️ Safety Filter<br/>(Constraint Check)"]
+    Actions[" Robot Actions<br/>(Joint Angles)"]
+    Safety[" Safety Filter<br/>(Constraint Check)"]
     Execute["Execute on Robot<br/>(ROS 2)"]
 
     Image --> ImageEnc
@@ -426,10 +426,10 @@ Natural language is inherently ambiguous:
 
 | Instruction | Interpretation A | Interpretation B | Safety |
 |---|---|---|---|
-| "Move the arm up" | Increase z-coordinate | Rotate shoulder joint | ✓ Safe |
-| "Grab the thing" | Which object? | Gripper force? | ⚠️ Ambiguous |
-| "Push hard" | 50 N force | 200 N force? | ✗ Unsafe |
-| "Lift the robot" | Physically lift hardware | Invalid command | ✗ Unsafe |
+| "Move the arm up" | Increase z-coordinate | Rotate shoulder joint |  Safe |
+| "Grab the thing" | Which object? | Gripper force? |  Ambiguous |
+| "Push hard" | 50 N force | 200 N force? |  Unsafe |
+| "Lift the robot" | Physically lift hardware | Invalid command |  Unsafe |
 
 ### Multi-Step Clarification
 
@@ -469,12 +469,12 @@ class SafeActionGrounder:
             safety_check = action.get('safety_check', 'unknown')
 
             if safety_check == "safe":
-                # ✓ Safe, return action
+                #  Safe, return action
                 self.action_history.append(action)
                 return {"status": "success", "action": action}
 
             elif safety_check == "ambiguous":
-                # ⚠️ Ambiguous, ask for clarification
+                #  Ambiguous, ask for clarification
                 clarification_prompt = self._generate_clarification(instruction, action)
                 return {
                     "status": "clarify",
@@ -483,7 +483,7 @@ class SafeActionGrounder:
                 }
 
             elif safety_check == "unsafe":
-                # ✗ Unsafe, reject
+                #  Unsafe, reject
                 return {
                     "status": "rejected",
                     "action": action,
@@ -501,10 +501,10 @@ class SafeActionGrounder:
     def execute_safe_action(self, action: Dict) -> bool:
         """Execute action only if safety_check is 'safe'."""
         if action.get('safety_check') == "safe":
-            print(f"✓ Executing: {action['action']}")
+            print(f" Executing: {action['action']}")
             return True
         else:
-            print(f"✗ Action rejected: {action.get('reasoning')}")
+            print(f" Action rejected: {action.get('reasoning')}")
             return False
 
 # Usage
@@ -651,17 +651,17 @@ test_actions = [
 
 for i, action in enumerate(test_actions):
     is_safe, reason = safety_validator.validate_action(action)
-    print(f"Action {i+1}: {'✓ SAFE' if is_safe else '✗ UNSAFE'}")
+    print(f"Action {i+1}: {' SAFE' if is_safe else ' UNSAFE'}")
     print(f"  Reason: {reason}\n")
 
 # Output:
-# Action 1: ✓ SAFE
+# Action 1:  SAFE
 #   Reason: All checks passed
 #
-# Action 2: ✗ UNSAFE
+# Action 2:  UNSAFE
 #   Reason: Target (5.0, 0.0, 0.1) outside workspace bounds
 #
-# Action 3: ✗ UNSAFE
+# Action 3:  UNSAFE
 #   Reason: Low confidence: 0.30 < 0.5 threshold
 ```
 
@@ -697,9 +697,9 @@ for i, action in enumerate(test_actions):
    - Goal: above 95% precision, above 90% recall, below 5% false positives
 
 **Success Metrics (2025 Benchmarks):**
-- ✅ **Target**: 93% precision, 87% recall (industry-standard VLA)
-- ✅ **Stretch**: 96% precision, 92% recall (production-ready)
-- ✅ **Excellence**: >98% precision, >95% recall (research-grade safe VLA)
+-  **Target**: 93% precision, 87% recall (industry-standard VLA)
+-  **Stretch**: 96% precision, 92% recall (production-ready)
+-  **Excellence**: >98% precision, >95% recall (research-grade safe VLA)
 
 **Hints:**
 - Use CLIP similarity scores to verify objects actually exist in scene
@@ -770,10 +770,10 @@ class HumanoidVLASystem:
         # Step 3: Safety validation
         is_safe, reason = self.safety_validator.validate_action(action)
         if not is_safe:
-            print(f"[Safety] ✗ Rejected: {reason}")
+            print(f"[Safety]  Rejected: {reason}")
             return {"status": "rejected", "reason": reason}
 
-        print(f"[Safety] ✓ Passed: {reason}")
+        print(f"[Safety]  Passed: {reason}")
 
         # Step 4: Plan trajectory
         start_q = np.zeros(6)

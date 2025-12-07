@@ -23,13 +23,13 @@ This appendix shows how to build a **Retrieval-Augmented Generation (RAG) chatbo
 
 ```mermaid
 graph LR
-    User["👤 User Query<br/>(What is kinematics?)"]
-    Encode["🔍 Encode Query<br/>(CLIP Text Encoder)<br/>→ 512-D vector"]
-    Search["📚 Search Qdrant<br/>(Semantic Search)"]
-    Retrieve["📄 Retrieved Sections<br/>(Top 3)"]
-    Prompt["📝 Augment Prompt<br/>(Query + Context)"]
-    LLM["🧠 Llama 3<br/>(Generate Answer)"]
-    Response["💬 Response<br/>(Grounded in textbook)"]
+    User[" User Query<br/>(What is kinematics?)"]
+    Encode[" Encode Query<br/>(CLIP Text Encoder)<br/>→ 512-D vector"]
+    Search[" Search Qdrant<br/>(Semantic Search)"]
+    Retrieve[" Retrieved Sections<br/>(Top 3)"]
+    Prompt[" Augment Prompt<br/>(Query + Context)"]
+    LLM[" Llama 3<br/>(Generate Answer)"]
+    Response[" Response<br/>(Grounded in textbook)"]
 
     User --> Encode
     Encode --> Search
@@ -105,7 +105,7 @@ class TextbookIngester:
             collection_name=self.collection_name,
             vectors_config=VectorParams(size=512, distance=Distance.COSINE)
         )
-        print(f"✓ Created collection: {self.collection_name}")
+        print(f" Created collection: {self.collection_name}")
 
     def split_into_sections(self, text: str, max_chars: int = 2000) -> list:
         """Split text into overlapping sections."""
@@ -173,7 +173,7 @@ class TextbookIngester:
             collection_name=self.collection_name,
             points=points
         )
-        print(f"✓ Ingested {len(points)} sections from {chapter_name}")
+        print(f" Ingested {len(points)} sections from {chapter_name}")
 
     def ingest_all_chapters(self, chapters_dir: str):
         """Process all chapters."""
@@ -186,7 +186,7 @@ class TextbookIngester:
             print(f"\nProcessing {chapter_name}...")
             self.ingest_chapter(str(chapter_path), chapter_name)
 
-        print(f"\n✅ All chapters ingested: {len(chapter_files)} chapters")
+        print(f"\n All chapters ingested: {len(chapter_files)} chapters")
 
 # Run ingestion
 if __name__ == "__main__":
@@ -363,7 +363,7 @@ export default function RagQuery({ placeholder = "Ask a question..." }) {
 
   return (
     <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-      <h4>📚 Ask the Textbook</h4>
+      <h4> Ask the Textbook</h4>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

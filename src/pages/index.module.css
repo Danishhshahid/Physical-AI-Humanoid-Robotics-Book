@@ -1,6 +1,6 @@
 /* Hero Banner */
 .heroBanner {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   color: white;
   padding: 4rem 0;
   position: relative;
@@ -14,7 +14,7 @@
   right: -10%;
   width: 500px;
   height: 500px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 50%;
   filter: blur(40px);
 }
@@ -100,7 +100,7 @@
 
 .primaryButton {
   background-color: #fff;
-  color: #667eea;
+  color: #000;
   border: 2px solid #fff;
 }
 
@@ -142,7 +142,7 @@
 /* Features Section */
 .featuresSection {
   padding: 5rem 2rem;
-  background-color: #f8f9fa;
+  background-color: #f5f5f5;
 }
 
 .container {
@@ -154,7 +154,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #333;
+  color: #000;
   border: none;
   padding: 0;
 }
@@ -171,7 +171,7 @@
   border-radius: 0.75rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border-top: 4px solid #667eea;
+  border-top: 4px solid #000;
 }
 
 .featureCard:hover {
@@ -186,13 +186,13 @@
 
 .featureCard h3 {
   font-size: 1.3rem;
-  color: #333;
+  color: #000;
   margin: 0 0 0.75rem 0;
   border: none;
 }
 
 .featureCard p {
-  color: #666;
+  color: #444;
   line-height: 1.6;
   margin: 0;
 }
@@ -207,7 +207,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #333;
+  color: #000;
   border: none;
   padding: 0;
 }
@@ -219,22 +219,22 @@
 }
 
 .chapterCard {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
   padding: 2rem;
   border-radius: 0.75rem;
-  border: 1px solid #667eea30;
+  border: 1px solid #d0d0d0;
   transition: all 0.3s ease;
 }
 
 .chapterCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-  background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #e8e8e8 0%, #dcdcdc 100%);
 }
 
 .chapterNumber {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -244,13 +244,13 @@
 
 .chapterCard h3 {
   font-size: 1.3rem;
-  color: #333;
+  color: #000;
   margin: 0.5rem 0;
   border: none;
 }
 
 .chapterCard p {
-  color: #666;
+  color: #444;
   line-height: 1.6;
   margin: 0;
 }
@@ -258,7 +258,7 @@
 /* Quick Start Section */
 .quickStartSection {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
   color: white;
 }
 
@@ -317,24 +317,24 @@
 
 .quickStartCTA .primaryButton {
   background-color: white;
-  color: #667eea;
+  color: #000;
 }
 
 .quickStartCTA .primaryButton:hover {
   background-color: rgba(255, 255, 255, 0.9);
-  color: #667eea;
+  color: #000;
 }
 
 /* Community Section */
 .communitySection {
   padding: 5rem 2rem;
-  background-color: #f8f9fa;
+  background-color: #f5f5f5;
   text-align: center;
 }
 
 .communitySection h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: #000;
   border: none;
   padding: 0;
   text-align: center;
@@ -343,7 +343,7 @@
 
 .communityText {
   font-size: 1.1rem;
-  color: #666;
+  color: #444;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.8;
@@ -360,19 +360,19 @@
   display: inline-block;
   padding: 1rem 2rem;
   background: white;
-  color: #667eea;
+  color: #000;
   text-decoration: none;
   border-radius: 0.5rem;
   font-weight: 600;
-  border: 2px solid #667eea;
+  border: 2px solid #000;
   transition: all 0.3s ease;
 }
 
 .communityLink:hover {
-  background-color: #667eea;
+  background-color: #000;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Credit Section */
@@ -380,18 +380,18 @@
   padding: 3rem 2rem;
   background-color: white;
   text-align: center;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #ccc;
 }
 
 .creditSection h3 {
   font-size: 1.5rem;
-  color: #333;
+  color: #000;
   border: none;
   margin-bottom: 0.5rem;
 }
 
 .creditSection p {
-  color: #666;
+  color: #444;
   line-height: 1.8;
   max-width: 800px;
   margin: 0.5rem auto;
@@ -399,7 +399,7 @@
 
 .creditText {
   font-size: 0.95rem;
-  color: #888;
+  color: #666;
 }
 
 /* Responsive Design */
@@ -478,15 +478,15 @@
 
 /* Dark mode support */
 [data-theme='dark'] .heroBanner {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
 }
 
 [data-theme='dark'] .featuresSection {
-  background-color: #1a1a1a;
+  background-color: #0f0f0f;
 }
 
 [data-theme='dark'] .featureCard {
-  background-color: #2d2d2d;
+  background-color: #1a1a1a;
   color: #e0e0e0;
 }
 
@@ -495,16 +495,16 @@
 }
 
 [data-theme='dark'] .featureCard p {
-  color: #b0b0b0;
+  color: #aaa;
 }
 
 [data-theme='dark'] .chaptersSection {
-  background-color: #0a0a0a;
+  background-color: #000;
 }
 
 [data-theme='dark'] .chapterCard {
-  background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-  border-color: #667eea50;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-color: #333;
 }
 
 [data-theme='dark'] .chapterCard h3 {
@@ -512,38 +512,38 @@
 }
 
 [data-theme='dark'] .chapterCard p {
-  color: #b0b0b0;
+  color: #aaa;
 }
 
 [data-theme='dark'] .communitySection {
-  background-color: #1a1a1a;
+  background-color: #0f0f0f;
 }
 
 [data-theme='dark'] .communityText {
-  color: #b0b0b0;
+  color: #aaa;
 }
 
 [data-theme='dark'] .communityLink {
-  background-color: #2d2d2d;
-  border-color: #667eea;
-  color: #667eea;
+  background-color: #1a1a1a;
+  border-color: #fff;
+  color: #fff;
 }
 
 [data-theme='dark'] .communityLink:hover {
-  background-color: #667eea;
-  color: white;
+  background-color: #fff;
+  color: #000;
 }
 
 [data-theme='dark'] .creditSection {
-  background-color: #0a0a0a;
-  border-top-color: #333;
+  background-color: #000;
+  border-top-color: #222;
 }
 
 [data-theme='dark'] .creditSection h3,
 [data-theme='dark'] .creditSection p {
-  color: #b0b0b0;
+  color: #aaa;
 }
 
 [data-theme='dark'] .creditText {
-  color: #888;
+  color: #777;
 }

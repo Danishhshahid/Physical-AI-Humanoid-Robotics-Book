@@ -157,7 +157,7 @@ const config = {
       announcementBar: {
         id: 'announcement',
         content:
-          '🎉 Created by Danish Abbasi for GIAIC Community - Free Textbook for Humanoid Robotics & AI',
+          'Created by Danish Abbasi for GIAIC Community - Free Textbook for Humanoid Robotics & AI',
         isCloseable: true,
       },
     }),

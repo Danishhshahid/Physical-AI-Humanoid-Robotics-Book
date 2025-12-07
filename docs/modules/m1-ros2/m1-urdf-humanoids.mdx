@@ -8,11 +8,11 @@ description: "Master URDF (Unified Robot Description Format) - the XML language 
 ## What is URDF?
 
 **URDF** (Unified Robot Description Format) is an XML file that describes:
-- ✅ **Links**: Rigid bodies with mass, inertia, geometry
-- ✅ **Joints**: Connections between links (revolute, prismatic, fixed)
-- ✅ **Sensors**: Cameras, IMUs, F/T sensors mounted on links
-- ✅ **Materials**: Visual appearance and colors
-- ✅ **Collision geometry**: For physics simulation and collision detection
+-  **Links**: Rigid bodies with mass, inertia, geometry
+-  **Joints**: Connections between links (revolute, prismatic, fixed)
+-  **Sensors**: Cameras, IMUs, F/T sensors mounted on links
+-  **Materials**: Visual appearance and colors
+-  **Collision geometry**: For physics simulation and collision detection
 
 URDF is the **blueprint** of a robot. Every ROS 2 application needs it.
 
@@ -242,13 +242,13 @@ print(f"Shoulder limits: {shoulder_joint.limit.lower} to {shoulder_joint.limit.u
 Tesla Optimus is a 73-DOF humanoid with:
 
 ```
-├─ Torso (fixed to world)
-├─ Head (3 DOF)
-├─ Left Arm (7 DOF)
-├─ Right Arm (7 DOF)
-├─ Waist (3 DOF)
-├─ Left Leg (6 DOF)
-└─ Right Leg (6 DOF)
+ Torso (fixed to world)
+ Head (3 DOF)
+ Left Arm (7 DOF)
+ Right Arm (7 DOF)
+ Waist (3 DOF)
+ Left Leg (6 DOF)
+ Right Leg (6 DOF)
 ```
 
 Each joint is defined with:
@@ -260,20 +260,20 @@ Each joint is defined with:
 ## Best Practices
 
 1. **Accurate inertia tensors**
-   - ✅ Compute from CAD models or measure experimentally
-   - ❌ Don't guess arbitrary values
+   -  Compute from CAD models or measure experimentally
+   -  Don't guess arbitrary values
 
 2. **Realistic masses**
-   - ✅ Use actual component weights
-   - ❌ Don't use 1 kg for everything
+   -  Use actual component weights
+   -  Don't use 1 kg for everything
 
 3. **Proper collision geometry**
-   - ✅ Simplified shapes (boxes, cylinders) for speed
-   - ❌ Complex meshes cause slow collision detection
+   -  Simplified shapes (boxes, cylinders) for speed
+   -  Complex meshes cause slow collision detection
 
 4. **Origin frames**
-   - ✅ Orient axes to match joint motion direction
-   - ❌ Don't have arbitrary orientations
+   -  Orient axes to match joint motion direction
+   -  Don't have arbitrary orientations
 
 5. **Documentation**
    - Add comments explaining the structure

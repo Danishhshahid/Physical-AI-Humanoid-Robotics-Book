@@ -13,10 +13,10 @@ This textbook is hosted on Docusaurus and can be deployed to the web for free. H
 
 | Platform | Free Tier | Bandwidth | Build Time | SSL | CI/CD |
 |----------|-----------|-----------|-----------|-----|-------|
-| **GitHub Pages** | ✅ Unlimited | Unlimited | 5 min | ✅ | ✅ Auto |
-| **Vercel** | ✅ 1GB/mo | 100GB/mo | 2 min | ✅ | ✅ Auto |
-| **Netlify** | ✅ 300 min/mo | 100GB/mo | 3 min | ✅ | ✅ Auto |
-| **Cloudflare Pages** | ✅ Unlimited | Unlimited | 2 min | ✅ | ✅ Auto |
+| **GitHub Pages** |  Unlimited | Unlimited | 5 min |  |  Auto |
+| **Vercel** |  1GB/mo | 100GB/mo | 2 min |  |  Auto |
+| **Netlify** |  300 min/mo | 100GB/mo | 3 min |  |  Auto |
+| **Cloudflare Pages** |  Unlimited | Unlimited | 2 min |  |  Auto |
 
 **Recommendation**: Start with **GitHub Pages** (simplest, no config).
 
@@ -60,7 +60,7 @@ Create: `deploy.sh`
 #!/bin/bash
 set -e
 
-echo "🚀 Deploying to GitHub Pages..."
+echo " Deploying to GitHub Pages..."
 
 # Build static site
 cd website
@@ -71,7 +71,7 @@ git add -A
 git commit -m "Deploy: $(date +%Y-%m-%d)"
 git push origin master
 
-echo "✅ Deployed! Check: https://your-username.github.io/Physical-AI-Textbook/"
+echo " Deployed! Check: https://your-username.github.io/Physical-AI-Textbook/"
 ```
 
 ### Step 3: GitHub Actions (Automatic Deployment)
@@ -369,7 +369,7 @@ Store PDF in GitHub Releases for archival.
 
 ---
 
-**Ready to go live?** Choose your platform and deploy! 🚀
+**Ready to go live?** Choose your platform and deploy! 
 
 ---
 

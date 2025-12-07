@@ -87,10 +87,10 @@ A **node** is a process that performs one logical function:
 
 ```mermaid
 graph LR
-    Camera["📷 Camera Driver<br/>(Node)"]
-    Vision["👁️ Vision<br/>(Node)"]
-    Control["🎮 Control<br/>(Node)"]
-    Motor["⚙️ Motor Driver<br/>(Node)"]
+    Camera[" Camera Driver<br/>(Node)"]
+    Vision[" Vision<br/>(Node)"]
+    Control[" Control<br/>(Node)"]
+    Motor[" Motor Driver<br/>(Node)"]
 
     Camera -->|/camera/rgb| Vision
     Vision -->|/detected_objects| Control
@@ -234,10 +234,10 @@ Pub/Sub decouples producers from consumers:
 
 ```mermaid
 graph TD
-    Sensors["📡 Sensor Drivers<br/>(Publish joint_states, imu, forces)"]
-    Logger["📝 Data Logger<br/>(Subscribe to all topics)"]
-    Monitor["📊 Monitor<br/>(Subscribe to joint_states)"]
-    Control["🎮 Controller<br/>(Subscribe to imu for balance)"]
+    Sensors[" Sensor Drivers<br/>(Publish joint_states, imu, forces)"]
+    Logger[" Data Logger<br/>(Subscribe to all topics)"]
+    Monitor[" Monitor<br/>(Subscribe to joint_states)"]
+    Control[" Controller<br/>(Subscribe to imu for balance)"]
 
     Sensors -->|/joint_states| Logger
     Sensors -->|/imu/data| Logger
@@ -454,13 +454,13 @@ python3 client.py 3 5
 
 ```
 my_robot_pkg/
-├── package.xml          # Metadata
-├── setup.py             # Python setup
-├── my_robot_pkg/        # Source code
-│   ├── __init__.py
-│   ├── talker.py
-│   └── listener.py
-└── test/                # Unit tests
+ package.xml          # Metadata
+ setup.py             # Python setup
+ my_robot_pkg/        # Source code
+    __init__.py
+    talker.py
+    listener.py
+ test/                # Unit tests
 ```
 
 ### Build with colcon
@@ -538,11 +538,11 @@ Design a ROS 2 system that streams real-time sensor data from a simulated humano
 4. **Measurement**: Latency from sensor publish to logger write (goal: under 50 ms)
 
 **Success Metrics**:
-- ✅ All three nodes run without errors
-- ✅ Topics publish at correct frequencies
-- ✅ Logger records 100% of messages
-- ✅ Monitor shows live statistics
-- ✅ Latency under 50 ms p95
+-  All three nodes run without errors
+-  Topics publish at correct frequencies
+-  Logger records 100% of messages
+-  Monitor shows live statistics
+-  Latency under 50 ms p95
 
 :::
 
@@ -564,7 +564,7 @@ Design a ROS 2 system that streams real-time sensor data from a simulated humano
 
 :::info
 
-✅ **You now know how to code robot software** using ROS 2: nodes, topics, services, packages.
+ **You now know how to code robot software** using ROS 2: nodes, topics, services, packages.
 
 → **Chapter 4: Digital Twin Simulation** teaches you to **simulate** all these concepts in Gazebo before running on real hardware.
 

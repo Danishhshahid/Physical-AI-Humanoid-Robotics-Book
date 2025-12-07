@@ -30,11 +30,11 @@ Nodes run independently and communicate via topics or services.
 
 **Example**:
 ```
-📸 Camera Node → publishes to → /camera/image_raw
-⬇️
-📊 Vision Node → subscribes to /camera/image_raw → processes frames
-⬇️
-🤖 Control Node → subscribes to /camera/detections → moves arm to object
+ Camera Node → publishes to → /camera/image_raw
+
+ Vision Node → subscribes to /camera/image_raw → processes frames
+
+ Control Node → subscribes to /camera/detections → moves arm to object
 ```
 
 **Analogy**: Topics are like radio stations. Multiple listeners can tune in to the same broadcast.
@@ -45,7 +45,7 @@ Nodes run independently and communicate via topics or services.
 
 **Example**:
 ```
-🎯 Plan a path
+ Plan a path
 Client: "Move to position (1.0, 0.5, 0.2)"
 Server: "OK, computed 50-step trajectory"
 ```
@@ -222,12 +222,12 @@ print(f"Planned {len(response.planned_trajectory.points)} steps")
 ## Best Practices
 
 1. **One node = one responsibility**
-   - ✅ Separate camera driver, vision, and control
-   - ❌ Don't put everything in one node
+   -  Separate camera driver, vision, and control
+   -  Don't put everything in one node
 
 2. **Use meaningful topic names**
-   - ✅ `/arm/joint_commands`, `/camera/depth_image`
-   - ❌ `/data`, `/messages`
+   -  `/arm/joint_commands`, `/camera/depth_image`
+   -  `/data`, `/messages`
 
 3. **Set appropriate queue sizes**
    - High-frequency sensors: queue_size=10

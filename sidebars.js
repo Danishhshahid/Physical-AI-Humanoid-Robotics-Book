@@ -16,7 +16,7 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: '📖 Front Matter',
+      label: 'Front Matter',
       items: [
         'chapters/ch0-preface',
         'chapters/ch0-prerequisites',
@@ -25,7 +25,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🧠 Module 1: The Robotic Nervous System (ROS 2)',
+      label: 'Module 1: The Robotic Nervous System (ROS 2)',
       items: [
         'modules/m1-ros2/m1-overview',
         'modules/m1-ros2/m1-nodes-topics-services',
@@ -35,7 +35,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🌐 Module 2: The Digital Twin (Gazebo & Unity)',
+      label: 'Module 2: The Digital Twin (Gazebo & Unity)',
       items: [
         'modules/m2-digital-twin/m2-overview',
         'modules/m2-digital-twin/m2-gazebo-physics',
@@ -45,7 +45,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '⚡ Module 3: The AI-Robot Brain (NVIDIA Isaac)',
+      label: 'Module 3: The AI-Robot Brain (NVIDIA Isaac)',
       items: [
         'modules/m3-isaac/m3-overview',
         'modules/m3-isaac/m3-isaac-sim',
@@ -55,7 +55,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '🎯 Module 4: Vision-Language-Action (VLA)',
+      label: 'Module 4: Vision-Language-Action (VLA)',
       items: [
         'modules/m4-vla/m4-overview',
         'modules/m4-vla/m4-voice-to-action',
@@ -65,7 +65,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '📚 Appendices',
+      label: 'Appendices',
       items: [
         'appendices/appendix-a',
         'appendices/appendix-b',
