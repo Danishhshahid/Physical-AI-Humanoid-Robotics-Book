@@ -5,5 +5,5 @@ qdrant-client
 python-dotenv==1.0.0
 pydantic==2.5.0
 requests==2.31.0
-trafilatura==1.6.25
+trafilatura
 tqdm==4.66.1
