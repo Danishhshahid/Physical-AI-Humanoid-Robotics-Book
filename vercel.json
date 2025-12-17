@@ -3,23 +3,9 @@
   "outputDirectory": "build",
   "functions": {
     "api/**/*.py": {
-      "runtime": "python3.12"
+      "runtime": "vercel-python@0.9.0"
     }
   },
-  "rewrites": [
-    {
-      "source": "/api/ask",
-      "destination": "/api/ask.py"
-    },
-    {
-      "source": "/api/ask-selected-text",
-      "destination": "/api/ask-selected-text.py"
-    },
-    {
-      "source": "/api/health",
-      "destination": "/api/health.py"
-    }
-  ],
   "headers": [
     {
       "source": "/api/:path*",
