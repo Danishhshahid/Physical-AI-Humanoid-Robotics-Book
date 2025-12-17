@@ -1,0 +1,5 @@
+api/
+requirements.txt
+.venv/
+*.pyc
+__pycache__/
