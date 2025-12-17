@@ -34,7 +34,7 @@ const getChatbotConfig = () => {
     // 2. Get your backend URL (e.g., https://my-chatbot-api.up.railway.app).
     // 3. Replace the placeholder below with your actual backend URL.
     //
-    apiEndpoint = 'https://your-backend-api-goes-here.com'; // <-- REPLACE THIS
+    apiEndpoint = 'https://physical-ai-humanoid-robotics-book-rd2d.onrender.com'; // <-- REPLACE THIS
     // =========================================================================
 
   } else if (isDevelopment) {
