@@ -10,10 +10,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # === CONFIG ===
-COHERE_API_KEY = os.getenv("COHERE_API_KEY", "jme2PFlPqBNaBq7sxXX9Q6ubM2mjsdcoWwJ9EvUw")
-QDRANT_URL = os.getenv("QDRANT_URL", "https://17b20767-4f6f-4658-9281-bb8da2c51092.us-east4-0.gcp.cloud.qdrant.io:6333")
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.semax-0E_qLmg2bJpvmggx21gxOaveIFGvB38dpEU60")
+# Load from environment variables (required for production deployment)
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+QDRANT_URL = os.getenv("QDRANT_URL")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 COLLECTION_NAME = "humanoid_ai_book"
+
+# Validate required environment variables
+if not COHERE_API_KEY:
+    raise ValueError("COHERE_API_KEY environment variable is required")
+if not QDRANT_URL:
+    raise ValueError("QDRANT_URL environment variable is required")
+if not QDRANT_API_KEY:
+    raise ValueError("QDRANT_API_KEY environment variable is required")
 
 # Initialize clients
 co = cohere.Client(COHERE_API_KEY)
