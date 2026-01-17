@@ -14,32 +14,18 @@ const getChatbotConfig = () => {
     return window.__CHATBOT_CONFIG__;
   }
 
-  // Determine environment based on hostname
-  const isDevelopment = window.location.hostname === 'localhost' ||
-                        window.location.hostname === '127.0.0.1';
-
-  const isProduction = window.location.hostname === 'physical-ai-humanoid-robotics-book-tan.vercel.app';
+  const isProduction = window.location.hostname === 'physical-ai-humanoid-robotics-book-tan.vercel.app' ||
+    window.location.hostname.includes('vercel.app');
 
   // Default configuration based on environment
-  // Use port 8000 for the backend API by default (FastAPI / Uvicorn)
-  let apiEndpoint = 'http://localhost:8000'; // Default for local dev
+  let apiEndpoint = 'https://physical-ai-humanoid-robotics-book-rd2d.onrender.com'; // Default to production
 
-  if (isProduction) {
-    // =========================================================================
-    // IMPORTANT: FOR PRODUCTION, YOU MUST DEPLOY YOUR BACKEND SEPARATELY!
-    // =========================================================================
-    // The chatbot WILL NOT WORK on Vercel until you do this.
-    // 1. Deploy your FastAPI backend to a service like Railway, Render, or Heroku.
-    //    (See DEPLOY_BACKEND_API.md for instructions)
-    // 2. Get your backend URL (e.g., https://my-chatbot-api.up.railway.app).
-    // 3. Replace the placeholder below with your actual backend URL.
-    //
-    apiEndpoint = 'https://physical-ai-humanoid-robotics-book-rd2d.onrender.com'; // <-- REPLACE THIS
-    // =========================================================================
-
-  } else if (isDevelopment) {
+  if (isDevelopment) {
     // Local development
     apiEndpoint = 'http://localhost:8000';
+  } else if (isProduction) {
+    // Explicit production URL
+    apiEndpoint = 'https://physical-ai-humanoid-robotics-book-rd2d.onrender.com';
   }
 
   return {
