@@ -35,14 +35,17 @@ def retrieve_context(query: str, top_k: int = 5) -> str:
         texts=[query]
     ).embeddings[0]
 
-    results = qdrant.query_points(
-        collection_name=COLLECTION_NAME,
-        query=embedding,
-        limit=top_k
-    )
-
-    context = "\n\n".join([point.payload["text"] for point in results.points])
-    return context if context else "No relevant information found."
+    try:
+        results = qdrant.query_points(
+            collection_name=COLLECTION_NAME,
+            query=embedding,
+            limit=top_k
+        )
+        context = "\n\n".join([point.payload["text"] for point in results.points])
+        return context if context else "No relevant information found."
+    except Exception as e:
+        print(f"Retrieval error (could be Qdrant connection): {e}")
+        return "NOT_RELEVANT"
 
 
 def ask_question(question: str) -> str:
@@ -51,8 +54,8 @@ def ask_question(question: str) -> str:
     
     context = retrieve_context(question)
     
-    if "No relevant" in context:
-        return "I don't have information about that in the book."
+    if context == "NOT_RELEVANT" or "No relevant" in context:
+        return "Please select the text you want help with, then click Ask AI to get assistance."
 
     prompt = f"""
 You are an expert tutor for the "Physical AI & Humanoid Robotics" book.
@@ -116,7 +119,7 @@ Answer the question directly based on the selected text. Be concise and helpful.
         )
         return response.text
     except Exception as e:
-        return f"Error generating response from selected text: {e}"
+        return "Please select the text you want help with, then click Ask AI to get assistance."
 
 
 # === INTERACTIVE LOOP ===

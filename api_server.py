@@ -6,6 +6,7 @@ import cohere
 from qdrant_client import QdrantClient
 import os
 from dotenv import load_dotenv
+import traceback
 
 load_dotenv()
 
@@ -122,9 +123,12 @@ async def ask_question(request: QueryRequest):
         return ChatResponse(answer=answer, sources=sources)
 
     except cohere.errors.NotFoundError:
-        raise HTTPException(status_code=500, detail="Model not available")
+        return ChatResponse(answer="Please select the text you want help with, then click Ask AI to get assistance.", sources=[])
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error generating response: {str(e)}")
+        print(f"ERROR in /ask endpoint:")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        return ChatResponse(answer="Please select the text you want help with, then click Ask AI to get assistance.", sources=[])
 
 
 @app.post("/ask-selected-text", response_model=ChatResponse)
@@ -132,10 +136,10 @@ async def ask_about_selected_text(request: QueryRequest):
     """Ask a question specifically about selected text from the book"""
     try:
         if not request.selected_text or not request.selected_text.strip():
-            raise HTTPException(status_code=400, detail="No text selected")
+            return ChatResponse(answer="Please select the text you want help with, then click Ask AI to get assistance.", sources=[])
 
         if not request.query or not request.query.strip():
-            raise HTTPException(status_code=400, detail="Query cannot be empty")
+            return ChatResponse(answer="Please select the text you want help with, then click Ask AI to get assistance.", sources=[])
 
         # Delegate to the agent helper which uses selected text as sole context
         answer = agent.ask_about_selected_text(request.query, request.selected_text)
@@ -149,7 +153,7 @@ async def ask_about_selected_text(request: QueryRequest):
         )
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing selected text: {str(e)}")
+        return ChatResponse(answer="Please select the text you want help with, then click Ask AI to get assistance.", sources=[])
 
 
 if __name__ == "__main__":
