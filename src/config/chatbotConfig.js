@@ -16,6 +16,7 @@ const getChatbotConfig = () => {
 
   const isProduction = window.location.hostname === 'physical-ai-humanoid-robotics-book-tan.vercel.app' ||
     window.location.hostname.includes('vercel.app');
+  const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
   // Default configuration based on environment
   let apiEndpoint = 'https://physical-ai-humanoid-robotics-book-rd2d.onrender.com'; // Default to production

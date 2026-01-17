@@ -3,12 +3,13 @@ from qdrant_client import QdrantClient
 from dotenv import load_dotenv
 
 load_dotenv()
-QDRANT_URL = os.getenv("QDRANT_URL")
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+# Try without port
+url = "https://17b20767-4f6f-4658-9281-bb8da2c51092.us-east4-0.gcp.cloud.qdrant.io"
+api_key = os.getenv("QDRANT_API_KEY")
 
-print(f"Testing Qdrant at: {QDRANT_URL}")
+print(f"Testing Qdrant at: {url}")
 try:
-    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+    client = QdrantClient(url=url, api_key=api_key)
     collections = client.get_collections()
     print("Successfully connected to Qdrant!")
     print("Collections:", collections)
